@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
+
+body {
+  line-height: 1.75;
+  font-family: 'Sen', 'Inter', sans-serif;
+}
+
+.menu {
+  padding-block: 1rem;
+}
+
+
+.logo {
+  width: 120px;
+  height: auto;
+}

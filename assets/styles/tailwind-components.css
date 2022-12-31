@@ -1,0 +1,25 @@
+h1 {
+  @apply mb-3 text-[2rem] font-bold;
+}
+
+p {
+  @apply mb-5;
+}
+
+b,strong{
+  @apply text-secondary
+}
+
+
+.side-menu-section {
+  @apply flex flex-col;
+}
+
+.side-menu-header {
+  @apply mb-3 font-semibold;
+}
+
+.side-menu-link {
+  @apply border-l-[1px] border-gray-500 py-1 pl-4 opacity-40 hover:opacity-100;
+}
+

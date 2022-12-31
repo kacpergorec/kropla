@@ -1,19 +1,93 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<html lang="{{ app.request.locale }}" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      {% block title %}
+        Welcome!
+      {% endblock %}
+    </title>
+    <link rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>" />
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+    {% block stylesheets %}
+      {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+      {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+  </head>
+  <body class="from-black to-darkgray bg-fixed dark:bg-gradient-to-tr dark:text-white">
+    <div class="supports-backdrop-blur:bg-white/60 sticky top-0 z-40 w-full bg-white/95 backdrop-blur dark:border-slate-50/[0.06] dark:bg-transparent lg:border-b lg:border-slate-900/10">
+      <div class="menu container mx-auto flex justify-between px-3">
+        {# Logos #}
+        <div class="basis-1/6">
+          <a href="{{ path('app_home') }}" class="">
+            <img src="{{
+              asset(
+                'build/images/logo/wide-transparent-darkmode.webp'
+              )
+              }}"
+              alt="Kropla logo for the dark mode"
+              class="logo hidden dark:block" />
+            <img src="{{
+              asset(
+                'build/images/logo/wide-transparent-lightmode.webp'
+              )
+              }}"
+              alt="Kropla logo for the light mode"
+              class="logo dark:hidden" />
+          </a>
+        </div>
+        {# Main naviagiton menu #}
+        <nav aria-label="Main navigation basis-5/6">
+          <ul class="flex h-full items-center gap-6">
+            <li><a href="#">O czym jest ta strona?</a></li>
+            <li><a href="#">Kto zrobił tę stronę?</a></li>
+            <li><a href="#">Blog</a></li>
+            <li>
+              <a href="#" class="rounded-lg bg-primary py-2 px-4 text-white">
+                Porozmawiajmy!
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="container mx-auto mt-8 px-3">
+      <div class="flex">
+        {# Side naviagiton menu #}
+        <aside class="basis-1/6">
+          <nav class="fixed flex flex-col gap-6" aria-label="Side navigation">
+
+
+{#            {{ knp_menu_render('main') }}#}
+
+            {% for category in 0..2 %}
+              <section class="side-menu-section">
+                <h2 class="side-menu-header">
+                  Wzorce projektowe
+                </h2>
+                <a href="#" class="side-menu-link">Wzorzec 1</a>
+                <a href="#" class="side-menu-link">Wzorzec 2</a>
+                <a href="#" class="side-menu-link">Wzorzec 3</a>
+              </section>
+            {% endfor %}
+
+          </nav>
+        </aside>
+
+        {# Main Content #}
+        <main class="basis-4/6">
+          {% block body %}
+
+          {% endblock %}
+        </main>
+        <aside class="basis-1/6">
+
+        </aside>
+      </div>
+    </div>
+  </body>
 </html>
