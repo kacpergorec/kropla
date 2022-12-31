@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d4047e7238b91ce7ea5179e83400dd3",
+    "content-hash": "d5497f0cbc28f330cd735ce1e8c7ad57",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1546,6 +1546,142 @@
                 }
             ],
             "time": "2022-10-17T19:48:16+00:00"
+        },
+        {
+            "name": "knplabs/knp-menu",
+            "version": "v3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/KnpMenu.git",
+                "reference": "8bd3dc2afa22c65617c563c5e25e62d6e23e98c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenu/zipball/8bd3dc2afa22c65617c563c5e25e62d6e23e98c7",
+                "reference": "8bd3dc2afa22c65617c563c5e25e62d6e23e98c7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3 || ^8.0"
+            },
+            "conflict": {
+                "twig/twig": "<1.40 || >=2,<2.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5",
+                "psr/container": "^1.0",
+                "symfony/http-foundation": "^4.4 || ^5.0 || ^6.0",
+                "symfony/phpunit-bridge": "^5.3",
+                "symfony/routing": "^4.4 || ^5.0 || ^6.0",
+                "twig/twig": "^1.40 || ^2.9 || ^3.0"
+            },
+            "suggest": {
+                "twig/twig": "for the TwigRenderer and the integration with your templates"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Knp\\Menu\\": "src/Knp/Menu"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs",
+                    "homepage": "https://knplabs.com"
+                },
+                {
+                    "name": "Christophe Coevoet",
+                    "email": "stof@notk.org"
+                },
+                {
+                    "name": "The Community",
+                    "homepage": "https://github.com/KnpLabs/KnpMenu/contributors"
+                }
+            ],
+            "description": "An object oriented menu library",
+            "homepage": "https://knplabs.com",
+            "keywords": [
+                "menu",
+                "tree"
+            ],
+            "support": {
+                "issues": "https://github.com/KnpLabs/KnpMenu/issues",
+                "source": "https://github.com/KnpLabs/KnpMenu/tree/v3.3.0"
+            },
+            "time": "2021-10-23T15:01:04+00:00"
+        },
+        {
+            "name": "knplabs/knp-menu-bundle",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/KnpMenuBundle.git",
+                "reference": "a0b4224f872d74ae939589eb1ccf0e11291370a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/KnpMenuBundle/zipball/a0b4224f872d74ae939589eb1ccf0e11291370a9",
+                "reference": "a0b4224f872d74ae939589eb1ccf0e11291370a9",
+                "shasum": ""
+            },
+            "require": {
+                "knplabs/knp-menu": "^3.1",
+                "php": "^7.2 || ^8.0",
+                "symfony/framework-bundle": "^3.4 | ^4.4 | ^5.0 | ^6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.5 | ^9.5",
+                "symfony/expression-language": "^3.4 | ^4.4 | ^5.0 | ^6.0",
+                "symfony/phpunit-bridge": "^5.2 | ^6.0",
+                "symfony/templating": "^3.4 | ^4.4 | ^5.0 | ^6.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Knp\\Bundle\\MenuBundle\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Knplabs",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Christophe Coevoet",
+                    "email": "stof@notk.org"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://github.com/KnpLabs/KnpMenuBundle/contributors"
+                }
+            ],
+            "description": "This bundle provides an integration of the KnpMenu library",
+            "keywords": [
+                "menu"
+            ],
+            "support": {
+                "issues": "https://github.com/KnpLabs/KnpMenuBundle/issues",
+                "source": "https://github.com/KnpLabs/KnpMenuBundle/tree/v3.2.0"
+            },
+            "time": "2021-10-24T07:53:34+00:00"
         },
         {
             "name": "laminas/laminas-code",
@@ -7431,6 +7567,74 @@
     ],
     "packages-dev": [
         {
+            "name": "fakerphp/faker",
+            "version": "v1.21.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FakerPHP/Faker.git",
+                "reference": "92efad6a967f0b79c499705c69b662f738cc9e4d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/92efad6a967f0b79c499705c69b662f738cc9e4d",
+                "reference": "92efad6a967f0b79c499705c69b662f738cc9e4d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0",
+                "psr/container": "^1.0 || ^2.0",
+                "symfony/deprecation-contracts": "^2.2 || ^3.0"
+            },
+            "conflict": {
+                "fzaninotto/faker": "*"
+            },
+            "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.4.1",
+                "doctrine/persistence": "^1.3 || ^2.0",
+                "ext-intl": "*",
+                "phpunit/phpunit": "^9.5.26",
+                "symfony/phpunit-bridge": "^5.4.16"
+            },
+            "suggest": {
+                "doctrine/orm": "Required to use Faker\\ORM\\Doctrine",
+                "ext-curl": "Required by Faker\\Provider\\Image to download images.",
+                "ext-dom": "Required by Faker\\Provider\\HtmlLorem for generating random HTML.",
+                "ext-iconv": "Required by Faker\\Provider\\ru_RU\\Text::realText() for generating real Russian text.",
+                "ext-mbstring": "Required for multibyte Unicode string functionality."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "v1.21-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "support": {
+                "issues": "https://github.com/FakerPHP/Faker/issues",
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.21.0"
+            },
+            "time": "2022-12-13T13:54:32+00:00"
+        },
+        {
             "name": "masterminds/html5",
             "version": "2.7.6",
             "source": {
@@ -9696,6 +9900,206 @@
                 }
             ],
             "time": "2021-07-28T10:34:58+00:00"
+        },
+        {
+            "name": "zenstruck/assert",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zenstruck/assert.git",
+                "reference": "a1c6501c975339ded3bcf8092a17277f6e21ac82"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zenstruck/assert/zipball/a1c6501c975339ded3bcf8092a17277f6e21ac82",
+                "reference": "a1c6501c975339ded3bcf8092a17277f6e21ac82",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/polyfill-php73": "^1.8",
+                "symfony/polyfill-php80": "^1.15",
+                "symfony/polyfill-php81": "^1.23"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.4",
+                "symfony/phpunit-bridge": "^5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zenstruck\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Bond",
+                    "email": "kevinbond@gmail.com"
+                }
+            ],
+            "description": "Standalone, lightweight, framework agnostic, test assertion library.",
+            "homepage": "https://github.com/zenstruck/assert",
+            "keywords": [
+                "assertion",
+                "phpunit",
+                "test"
+            ],
+            "support": {
+                "issues": "https://github.com/zenstruck/assert/issues",
+                "source": "https://github.com/zenstruck/assert/tree/v1.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-07-12T12:30:27+00:00"
+        },
+        {
+            "name": "zenstruck/callback",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zenstruck/callback.git",
+                "reference": "eed9a532fd8974368e60c4a2550ed65eab7e5432"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zenstruck/callback/zipball/eed9a532fd8974368e60c4a2550ed65eab7e5432",
+                "reference": "eed9a532fd8974368e60c4a2550ed65eab7e5432",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/polyfill-php80": "^1.14"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zenstruck\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Bond",
+                    "email": "kevinbond@gmail.com"
+                }
+            ],
+            "description": "Callable wrapper to validate and inject arguments.",
+            "homepage": "https://github.com/zenstruck/callback",
+            "keywords": [
+                "callable",
+                "callback",
+                "utility"
+            ],
+            "support": {
+                "issues": "https://github.com/zenstruck/callback/issues",
+                "source": "https://github.com/zenstruck/callback/tree/v1.5.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-08-31T14:56:15+00:00"
+        },
+        {
+            "name": "zenstruck/foundry",
+            "version": "v1.26.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zenstruck/foundry.git",
+                "reference": "e4a5cd6b299ad89d8d6f1b0bec45ad99d8e815b8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zenstruck/foundry/zipball/e4a5cd6b299ad89d8d6f1b0bec45ad99d8e815b8",
+                "reference": "e4a5cd6b299ad89d8d6f1b0bec45ad99d8e815b8",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/persistence": "^1.3.3|^2.0|^3.0",
+                "fakerphp/faker": "^1.5",
+                "php": ">=8.0",
+                "symfony/deprecation-contracts": "^2.2|^3.0",
+                "symfony/property-access": "^4.4|^5.0|^6.0",
+                "symfony/string": "^5.4|^6.0",
+                "zenstruck/assert": "^1.0",
+                "zenstruck/callback": "^1.1"
+            },
+            "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.4",
+                "dama/doctrine-test-bundle": "^6.0|^7.0",
+                "doctrine/doctrine-bundle": "^2.0",
+                "doctrine/doctrine-migrations-bundle": "^2.2|^3.0",
+                "doctrine/mongodb-odm-bundle": "^3.1|^4.2",
+                "doctrine/orm": "^2.7",
+                "matthiasnoback/symfony-dependency-injection-test": "^4.1",
+                "symfony/framework-bundle": "^4.4|^5.0|^6.0",
+                "symfony/maker-bundle": "^1.30",
+                "symfony/phpunit-bridge": "^6.0",
+                "symfony/translation-contracts": "^2.5|^3.0"
+            },
+            "type": "library",
+            "extra": {
+                "bamarni-bin": {
+                    "target-directory": "bin/tools",
+                    "bin-links": true,
+                    "forward-command": false
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "Zenstruck\\Foundry\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Bond",
+                    "email": "kevinbond@gmail.com"
+                }
+            ],
+            "description": "A model factory library for creating expressive, auto-completable, on-demand dev/test fixtures with Symfony and Doctrine.",
+            "homepage": "https://github.com/zenstruck/foundry",
+            "keywords": [
+                "Fixture",
+                "doctrine",
+                "factory",
+                "faker",
+                "symfony",
+                "test"
+            ],
+            "support": {
+                "issues": "https://github.com/zenstruck/foundry/issues",
+                "source": "https://github.com/zenstruck/foundry/tree/v1.26.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-12-29T20:16:36+00:00"
         }
     ],
     "aliases": [],

@@ -11,6 +11,7 @@
         "doctrine/doctrine-bundle": "^2.8",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.14",
+        "knplabs/knp-menu-bundle": "^3.2",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.15",
         "sensio/framework-extra-bundle": "^6.1",
@@ -98,6 +99,7 @@
         "symfony/maker-bundle": "^1.0",
         "symfony/phpunit-bridge": "^6.2",
         "symfony/stopwatch": "6.2.*",
-        "symfony/web-profiler-bundle": "6.2.*"
+        "symfony/web-profiler-bundle": "6.2.*",
+        "zenstruck/foundry": "^1.26"
     }
 }
