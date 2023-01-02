@@ -5,9 +5,6 @@
  * (and its CSS file) in your base layout (base.html.twig).
  */
 
-// any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
-
 // start the Stimulus application
 import './bootstrap';
 
@@ -16,3 +13,15 @@ import './styles/scss/app.scss';
 
 // Tailwind components
 import './styles/tailwind-components.css';
+
+
+
+function setSideMenuWidth() {
+    let sideMenu = document.querySelector('.side-menu');
+    const parent = sideMenu.parentElement;
+
+    sideMenu.style.width = `${parent.offsetWidth}px`;
+}
+
+window.addEventListener('load', setSideMenuWidth);
+window.addEventListener('resize', setSideMenuWidth);

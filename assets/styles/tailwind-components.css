@@ -7,19 +7,21 @@ p {
 }
 
 b,strong{
-  @apply text-secondary
+  @apply text-third dark:text-secondary
 }
 
+.side-menu{
+  @apply  flex flex-col gap-7 overflow-y-auto fixed leading-6
+}
 
-.side-menu-section {
+.side-menu__section {
   @apply flex flex-col;
 }
 
-.side-menu-header {
+.side-menu__header {
   @apply mb-3 font-semibold;
 }
 
-.side-menu-link {
-  @apply border-l-[1px] border-gray-500 py-1 pl-4 opacity-40 hover:opacity-100;
+.side-menu__link {
+  @apply border-l-[1px] border-gray-500 py-1 pl-4 opacity-50 hover:opacity-100 leading-5;
 }
-

@@ -29,6 +29,9 @@ class Page
     #[ORM\ManyToOne(inversedBy: 'pages')]
     private ?Category $category = null;
 
+    #[ORM\Column]
+    private ?bool $promoted = null;
+
 
     public function getTitle(): ?string
     {
@@ -86,5 +89,17 @@ class Page
     public function setSlug($slug)
     {
         $this->slug = $slug;
+    }
+
+    public function isPromoted(): ?bool
+    {
+        return $this->promoted;
+    }
+
+    public function setPromoted(bool $promoted): self
+    {
+        $this->promoted = $promoted;
+
+        return $this;
     }
 }

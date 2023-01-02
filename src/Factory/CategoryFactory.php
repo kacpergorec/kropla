@@ -47,7 +47,7 @@ final class CategoryFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'title' => self::faker()->realTextBetween(10,20),
+            'title' => preg_replace('/[^\w\s]/', '', self::faker()->text(20)), //filters out the punctuation
         ];
     }
 

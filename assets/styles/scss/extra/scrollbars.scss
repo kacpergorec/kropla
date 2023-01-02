@@ -1,0 +1,25 @@
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: rgba(128, 128, 128, 0.15) transparent;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.15);
+  border-radius: 10px;
+
+  &:hover {
+    background-color: rgba(128, 128, 128, 0.30);
+  }
+}

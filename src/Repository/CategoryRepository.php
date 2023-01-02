@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -40,15 +41,24 @@ class CategoryRepository extends ServiceEntityRepository
     }
 
 
-    public function findAllWithChildrenPages() : array
+    public function findAllWithPublishedChildrenPages(): QueryBuilder
     {
         return $this->createQueryBuilder('c')
-            ->orderBy('c.title', 'DESC')
-            ->getQuery()
-            ->getResult()
-            ;
+            ->select('c', 'p')
+            ->leftJoin('c.pages', 'p')
+            ->andWhere('p.published = :isPublished')
+            ->setParameter('isPublished', 1)
+            ->orderBy('c.title', 'DESC');
     }
 
+    public function withPublishedChildPagesNotPromoted()
+    {
+        return $this->findAllWithPublishedChildrenPages()
+            ->andWhere('p.promoted = :isPromoted')
+            ->setParameter('isPromoted', false)
+            ->getQuery()
+            ->getResult();
+    }
 
 //    public function findOneBySomeField($value): ?Category
 //    {

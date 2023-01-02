@@ -45,10 +45,12 @@ final class PageFactory extends ModelFactory
      */
     protected function getDefaults(): array
     {
-        $title =self::faker()->realTextBetween(15,20);
+        $title =  preg_replace('/[^\w\s]/', '', self::faker()->text(20)); //filters out the punctuation
+
         return [
             'createdAt' => self::faker()->dateTime(),
             'published' => self::faker()->boolean(),
+            'promoted' => self::faker()->boolean(),
             'content' => self::faker()->text(255),
             'title' => $title,
             'slug' => Urlizer::urlize($title),

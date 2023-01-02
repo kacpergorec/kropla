@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Menu\MenuBuilder;
+use App\Menu\SideMenuBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

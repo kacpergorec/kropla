@@ -12,9 +12,9 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
 
-        $categories = CategoryFactory::createMany(5);
+        $categories = CategoryFactory::createMany(3);
 
-        PageFactory::createMany(15, static function () use ($categories) {
+        PageFactory::createMany(20, static function () use ($categories) {
             return [
                 'category' => $categories[array_rand($categories)],
             ];
