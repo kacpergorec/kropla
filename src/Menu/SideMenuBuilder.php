@@ -3,6 +3,7 @@ declare (strict_types=1);
 
 namespace App\Menu;
 
+use App\Cache\CacheManager;
 use App\Repository\CategoryRepository;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
@@ -11,16 +12,21 @@ class SideMenuBuilder
 {
     public function __construct(
         private FactoryInterface   $factory,
-        private CategoryRepository $categoryRepository
+        private CategoryRepository $categoryRepository,
+        private CacheManager       $cacheManager,
     )
     {
     }
 
     public function createSideMenu(array $options): ItemInterface
     {
+
         $sideMenu = $this->factory->createItem('side');
 
-        $categories = $this->categoryRepository->withPublishedChildPagesNotPromoted();
+        $categories = $this->cacheManager->get(
+            'side_menu',
+            fn() => $this->categoryRepository->withPublishedChildPagesNotPromoted()
+        );
 
         foreach ($categories as $category) {
             $categoryTitle = $category->getTitle();
@@ -29,9 +35,9 @@ class SideMenuBuilder
 
             foreach ($category->getPages() as $page) {
                 $sideMenu[$categoryTitle]->addChild($page->getTitle(), [
-                        'route' => 'app_home',
+                        'route' => 'app_page',
                         'routeParameters' => ['slug' => $page->getSlug()],
-                        ]
+                    ]
                 );
             }
         }
