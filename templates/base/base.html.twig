@@ -19,7 +19,9 @@
     {% endblock %}
 </head>
 
-<body class="from-black to-darkgray bg-fixed dark:bg-gradient-to-tr dark:text-white dark:bg-black">
+{# high contrast mode  -->  from-black to-darkgray bg-fixed dark:bg-gradient-to-tr dark:bg-black #}
+{#<body class="from-black to-darkgray bg-fixed dark:bg-gradient-to-tr dark:bg-black text-gray-700 dark:text-gray-500">#}
+<body class="dark:bg-zinc-900 text-gray-700 dark:text-gray-400">
 
 {% include('base/header.html.twig') %}
 

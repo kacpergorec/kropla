@@ -2,6 +2,10 @@ h1 {
   @apply mb-3 text-[2rem] font-bold;
 }
 
+h1,h2,h3,h4,h5,h6 {
+  @apply text-black dark:text-white
+}
+
 p {
   @apply mb-5;
 }
@@ -23,5 +27,5 @@ b,strong{
 }
 
 .side-menu__link {
-  @apply border-l-[1px] border-gray-500 py-1 pl-4 opacity-50 hover:opacity-100 leading-5;
+  @apply border-l-[1px] border-gray-500 py-1 pl-4 opacity-70 hover:opacity-100 leading-5;
 }
