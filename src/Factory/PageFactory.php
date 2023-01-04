@@ -53,7 +53,6 @@ final class PageFactory extends ModelFactory
             'promoted' => self::faker()->boolean(),
             'content' => self::faker()->text(255),
             'title' => $title,
-            'slug' => Urlizer::urlize($title),
             'updatedAt' => self::faker()->dateTime(),
         ];
     }

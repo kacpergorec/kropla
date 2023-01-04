@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +12,7 @@ class AdminController extends AbstractController
     #[Route('/admin', name: 'admin_panel')]
     public function index(): Response
     {
-        return $this->render('admin/index.html.twig', [
+        return $this->render('admin/panel.html.twig', [
             'controller_name' => 'AdminController',
         ]);
     }
@@ -21,9 +21,9 @@ class AdminController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils)
     {
 
-         if ($this->getUser()) {
-             return $this->redirectToRoute('admin_panel');
-         }
+//         if ($this->getUser()) {
+//             return $this->redirectToRoute('admin_panel');
+//         }
 
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();

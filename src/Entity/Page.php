@@ -10,7 +10,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 #[ORM\Entity(repositoryClass: PageRepository::class)]
 class Page
 {
-
     use PublishableEntityTrait;
 
     #[ORM\Column(length: 255)]

@@ -1,0 +1,15 @@
+h1 {
+  @apply mb-3 text-[3rem] font-bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply text-black dark:text-white
+}
+
+p {
+  @apply mb-5;
+}
+
+b, strong {
+  @apply text-secondary
+}

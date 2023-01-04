@@ -1,0 +1,49 @@
+{% extends 'admin/panel.html.twig' %}
+
+{% block title %}
+- Pages
+{% endblock %}
+
+{% block body %}
+    <h1>Page index</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>RedirectUrl</th>
+            <th>Slug</th>
+            <th>Promoted</th>
+            <th>Published</th>
+            <th>CreatedAt</th>
+            <th>UpdatedAt</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for page in pages %}
+            <tr>
+                <td>{{ page.title }}</td>
+                <td>{{ page.content }}</td>
+                <td>{{ page.redirectUrl }}</td>
+                <td>{{ page.slug }}</td>
+                <td>{{ page.promoted ? 'Yes' : 'No' }}</td>
+                <td>{{ page.published ? 'Yes' : 'No' }}</td>
+                <td>{{ page.createdAt ? page.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ page.updatedAt ? page.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_admin_page_show', {'id': page.id}) }}">show</a>
+                    <a href="{{ path('app_admin_page_edit', {'id': page.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_page_new') }}">Create new</a>
+{% endblock %}

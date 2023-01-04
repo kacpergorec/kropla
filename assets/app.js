@@ -11,10 +11,6 @@ import './bootstrap';
 // Sass
 import './styles/scss/app.scss';
 
-// Tailwind components
-import './styles/tailwind-components.css';
-
-
 
 function setSideMenuWidth() {
     let sideMenu = document.querySelector('.side-menu');

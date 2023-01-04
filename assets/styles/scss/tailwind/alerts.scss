@@ -1,0 +1,19 @@
+$alerts: (
+        "danger": "rose",
+        "warning": "amber",
+        "info": "sky",
+        "success": "emerald"
+);
+
+.alert {
+  @apply text-sm bg-neutral-400 border-neutral-500 border px-5 py-3 bg-opacity-10 border-opacity-10 rounded-lg dark:text-white text-black
+}
+
+@each $alert-name, $tailwind-color in $alerts {
+  .alert {
+    &--#{$alert-name} {
+      @apply bg-#{$tailwind-color}-500 border-#{$tailwind-color}-500 text-#{$tailwind-color}-600 dark:text-#{$tailwind-color}-400 border-opacity-10 bg-opacity-10
+    }
+  }
+}
+
