@@ -2,13 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400;700;800&display=swap');
-
 @import 'extra/scrollbars';
+@import "@fontsource/sen";
 
 body {
   line-height: 1.75;
-  font-family: 'Sen', 'Inter', sans-serif;
+  font-family: 'Sen', sans-serif;
   min-height: 100vh;
 
   display: flex;

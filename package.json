@@ -18,7 +18,7 @@
         "regenerator-runtime": "^0.13.9",
         "sass-loader": "^13.2.0",
         "tailwindcss": "^3.2.4",
-        "webp-loader": "^0.4.0",
+        "webp-loader": "^0.6.0",
         "webpack": "^5.74.0",
         "webpack-cli": "^4.10.0",
         "webpack-notifier": "^1.15.0"
@@ -34,6 +34,8 @@
         "format:styles": "prettier --write assets/styles/**/*css"
     },
     "dependencies": {
-        "@fontsource/inter": "^4.5.14"
+        "@ckeditor/ckeditor5-build-balloon-block": "^35.4.0",
+        "@fontsource/sen": "^4.5.9",
+        "@tailwindcss/forms": "^0.5.3"
     }
 }

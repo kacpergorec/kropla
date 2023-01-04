@@ -11,7 +11,7 @@ p {
 }
 
 b,strong{
-  @apply text-third dark:text-secondary
+  @apply text-secondary
 }
 
 .side-menu{

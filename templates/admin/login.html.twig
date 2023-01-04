@@ -1,0 +1,60 @@
+{% extends 'base/base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <form method="post" class="m-auto w-full md:w-8/12">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+        <h1 class="text-5xl mb-10">
+            Zaloguj się
+        </h1>
+
+        <div class="flex flex-col gap-6">
+            <div class="flex flex-col">
+                <label for="inputEmail" class="text-black dark:text-white text-sm pb-2">
+                    Adres Email
+                </label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email"
+                       required autofocus class="bg-gray-500 bg-opacity-10 rounded-lg p-3 border-zinc-500 border-opacity-10 focus:ring-secondary focus:border-secondary">
+            </div>
+
+
+            <div class="flex flex-col">
+                <label for="inputPassword" class="text-black dark:text-white text-sm pb-2">
+                    Hasło
+                </label>
+                <input type="password" name="password" id="inputPassword" autocomplete="current-password" required
+                       class="bg-gray-500 bg-opacity-10 rounded-lg p-3 border-zinc-500 border-opacity-10 focus:ring-secondary focus:border-secondary">
+            </div>
+
+
+            <div class="checkbox mb-3">
+                <label class="flex items-center gap-4">
+                    <input type="checkbox" name="_remember_me"
+                           class="h-7 w-7 bg-gray-500 bg-opacity-10 border-zinc-500 border-opacity-10 rounded-lg text-secondary focus:ring-secondary">
+                    Zapamiętaj mnie
+                </label>
+            </div>
+
+
+            <button class="bg-primary text-white hover:bg-opacity-80 transition p-2 w-fit px-20 rounded-lg " type="submit">
+                Zaloguj
+            </button>
+        </div>
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+
+    </form>
+
+
+{% endblock %}

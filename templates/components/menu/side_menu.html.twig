@@ -1,14 +1,16 @@
-<nav class="side-menu" aria-label="Side navigation">
-    {% for category in knp_menu_get('side') %}
-        <section class="side-menu__section">
-            <h2 class="side-menu__header">
-                {{ category.name }}
-            </h2>
-            {% for page in category.children %}
-                <a href="{{ page.uri }}" class="side-menu__link">
-                    {{ page.name }}
-                </a>
-            {% endfor %}
-        </section>
-    {% endfor %}
-</nav>
+<div class="{{ app.request.attributes.get('_route') == 'admin_login' ? 'hidden' : '' }}">
+    <nav class="side-menu" aria-label="Side navigation">
+        {% for category in knp_menu_get('side') %}
+            <section class="side-menu__section">
+                <h2 class="side-menu__header">
+                    {{ category.name }}
+                </h2>
+                {% for page in category.children %}
+                    <a href="{{ page.uri }}" class="side-menu__link">
+                        {{ page.name }}
+                    </a>
+                {% endfor %}
+            </section>
+        {% endfor %}
+    </nav>
+</div>

@@ -2,21 +2,18 @@
 <html lang="{{ app.request.locale }}" class="dark">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>
         {% block title %}
             Welcome!
         {% endblock %}
     </title>
+
     <link rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>"/>
 
-    {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-    {% endblock %}
-
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-    {% endblock %}
+    {% include 'base/encore.html.twig' %}
 </head>
 
 {# high contrast mode  -->  from-black to-darkgray bg-fixed dark:bg-gradient-to-tr dark:bg-black #}
@@ -25,16 +22,17 @@
 
 {% include('base/header.html.twig') %}
 
-<div class="container mx-auto mt-8 px-3 grow">
-    <div class="flex">
+<div class="container mx-auto mt-8 px-3 flex grow">
+    <div class="flex grow">
+
         {# Side naviagiton menu #}
         <aside class="basis-1/6">
             {% include('components/menu/side_menu.html.twig') %}
         </aside>
 
         {# Main Content #}
-        <main class="basis-4/6 px-6">
-           {% block content %}
+        <main class="basis-4/6 px-6 flex flex-col">
+           {% block body %}
            {% endblock %}
         </main>
 

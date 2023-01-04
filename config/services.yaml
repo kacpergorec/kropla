@@ -26,9 +26,9 @@ services:
             - { name: knp_menu.menu_builder, method: createSideMenu, alias: side }
 
     App\Menu\MainMenuBuilder:
-      arguments: [ "@knp_menu.factory" ]
-      tags:
-        - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }
+        arguments: [ "@knp_menu.factory" ]
+        tags:
+            - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }
 
     App\Cache\CacheManager:
         arguments: [ '%kernel.environment%' ]

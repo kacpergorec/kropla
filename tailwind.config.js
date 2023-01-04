@@ -12,12 +12,11 @@ module.exports = {
                 primary: '#2d0efe',
                 secondary: '#2aff81',
                 third: '#ff7800',
-                darkgray: '#13121d',
             },
             fontFamily: {
-                'sans': ['Inter'],
+                'sans': ['Sen'],
             },
         },
     },
-    plugins: [],
+    plugins: [require("@tailwindcss/forms")],
 }
