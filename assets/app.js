@@ -19,5 +19,8 @@ function setSideMenuWidth() {
     sideMenu.style.width = `${parent.offsetWidth}px`;
 }
 
-window.addEventListener('load', setSideMenuWidth);
-window.addEventListener('resize', setSideMenuWidth);
+if (document.querySelector('.side-menu')){
+    window.addEventListener('load', setSideMenuWidth);
+    window.addEventListener('resize', setSideMenuWidth);
+}
+

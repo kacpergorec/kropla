@@ -20,15 +20,12 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    App\Menu\SideMenuBuilder:
-        arguments: [ "@knp_menu.factory" ]
+    App\Menu\MenuProvider:
+        public: true
         tags:
-            - { name: knp_menu.menu_builder, method: createSideMenu, alias: side }
-
-    App\Menu\MainMenuBuilder:
-        arguments: [ "@knp_menu.factory" ]
-        tags:
-            - { name: knp_menu.menu_builder, method: createMainMenu, alias: main }
+            - { name: knp_menu.menu_builder, method: getMainMenu, alias: main }
+            - { name: knp_menu.menu_builder, method: getSideMenu, alias: side }
+            - { name: knp_menu.menu_builder, method: getAdminMenu, alias: admin }
 
     App\Cache\CacheManager:
         arguments: [ '%kernel.environment%' ]

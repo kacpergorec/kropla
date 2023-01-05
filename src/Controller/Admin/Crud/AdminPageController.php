@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Admin\Crud;
 
 use App\Entity\Page;
 use App\Form\PageType;
@@ -11,8 +11,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/admin/page')]
-class AdminPageController extends AbstractController
+class AdminPageController extends AbstractController implements CrudControllerInterface
 {
+
+    public static function getPluralName(): string
+    {
+        return 'Strony';
+    }
+
     #[Route('/', name: 'app_admin_page_index', methods: ['GET'])]
     public function index(PageRepository $pageRepository): Response
     {
@@ -70,10 +76,11 @@ class AdminPageController extends AbstractController
     #[Route('/{id}', name: 'app_admin_page_delete', methods: ['POST'])]
     public function delete(Request $request, Page $page, PageRepository $pageRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$page->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $page->getId(), $request->request->get('_token'))) {
             $pageRepository->remove($page, true);
         }
 
         return $this->redirectToRoute('app_admin_page_index', [], Response::HTTP_SEE_OTHER);
     }
+
 }

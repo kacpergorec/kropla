@@ -4,16 +4,16 @@
 - Pages
 {% endblock %}
 
-{% block body %}
-    <h1>Page index</h1>
+{% block header %}
+    Lista stron
+{% endblock %}
 
+{% block body %}
     <table class="table">
         <thead>
         <tr>
             <th>Title</th>
             <th>Content</th>
-            <th>RedirectUrl</th>
-            <th>Slug</th>
             <th>Promoted</th>
             <th>Published</th>
             <th>CreatedAt</th>
@@ -26,8 +26,6 @@
             <tr>
                 <td>{{ page.title }}</td>
                 <td>{{ page.content }}</td>
-                <td>{{ page.redirectUrl }}</td>
-                <td>{{ page.slug }}</td>
                 <td>{{ page.promoted ? 'Yes' : 'No' }}</td>
                 <td>{{ page.published ? 'Yes' : 'No' }}</td>
                 <td>{{ page.createdAt ? page.createdAt|date('Y-m-d H:i:s') : '' }}</td>
