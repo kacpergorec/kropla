@@ -1,7 +1,7 @@
 {% extends 'admin/panel.html.twig' %}
 
 {% block title %}
-- Pages
+    - Pages
 {% endblock %}
 
 {% block header %}
@@ -9,39 +9,28 @@
 {% endblock %}
 
 {% block body %}
-    <table class="table">
+
+    <table>
         <thead>
         <tr>
-            <th>Title</th>
-            <th>Content</th>
-            <th>Promoted</th>
-            <th>Published</th>
-            <th>CreatedAt</th>
-            <th>UpdatedAt</th>
-            <th>actions</th>
+            {% for header in table.headers %}
+                <th></th>
+            {% endfor %}
         </tr>
         </thead>
         <tbody>
-        {% for page in pages %}
+        {% for row in table.data %}
             <tr>
-                <td>{{ page.title }}</td>
-                <td>{{ page.content }}</td>
-                <td>{{ page.promoted ? 'Yes' : 'No' }}</td>
-                <td>{{ page.published ? 'Yes' : 'No' }}</td>
-                <td>{{ page.createdAt ? page.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ page.updatedAt ? page.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_admin_page_show', {'id': page.id}) }}">show</a>
-                    <a href="{{ path('app_admin_page_edit', {'id': page.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
+                {% for cell in row %}
+                    <td>
+                        {{ table_cell_render(cell) }}
+                    </td>
+                {% endfor %}
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
 
     <a href="{{ path('app_admin_page_new') }}">Create new</a>
 {% endblock %}

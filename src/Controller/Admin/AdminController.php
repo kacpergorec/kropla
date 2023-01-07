@@ -2,13 +2,14 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\Admin\Crud\CrudControllerInterface;
 use App\Menu\AdminMenuGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class AdminController extends AbstractController
+class AdminController extends AbstractController implements CrudControllerInterface
 {
     #[Route('/admin', name: 'admin_panel')]
     public function index(AdminMenuGenerator $menuGenerator): Response
@@ -38,5 +39,10 @@ class AdminController extends AbstractController
     #[Route(path: '/admin/logout', name: 'admin_logout')]
     public function logout(): void
     {
+    }
+
+    public static function getPluralName(): string
+    {
+        return 'Dashboard';
     }
 }

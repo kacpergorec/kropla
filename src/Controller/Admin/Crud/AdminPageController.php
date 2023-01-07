@@ -5,6 +5,7 @@ namespace App\Controller\Admin\Crud;
 use App\Entity\Page;
 use App\Form\PageType;
 use App\Repository\PageRepository;
+use App\Table\TableGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,10 +21,13 @@ class AdminPageController extends AbstractController implements CrudControllerIn
     }
 
     #[Route('/', name: 'app_admin_page_index', methods: ['GET'])]
-    public function index(PageRepository $pageRepository): Response
+    public function index(PageRepository $pageRepository, TableGenerator $tableGenerator): Response
     {
         return $this->render('admin/page/index.html.twig', [
-            'pages' => $pageRepository->findAll(),
+            'table' => $tableGenerator
+                ->addEntities($pageRepository->findAll(),['id','title','category'])
+                ->addOptionsColumn()
+                ->build()
         ]);
     }
 

@@ -40,6 +40,10 @@ class AdminMenuGenerator
         $routeCollection = $this->router->getRouteCollection();
 
         $menuRoutes = [];
+
+        /**
+         * @var CrudControllerInterface $crudController
+         */
         foreach ($crudControllers as $crudController) {
 
             $title = $crudController::getPluralName();

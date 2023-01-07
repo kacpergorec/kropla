@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PageRepository;
-use App\Traits\PublishableEntityTrait;
+use App\Entity\Trait\PublishableEntityTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
