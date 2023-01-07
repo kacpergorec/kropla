@@ -25,8 +25,9 @@ class AdminPageController extends AbstractController implements CrudControllerIn
     {
         return $this->render('admin/page/index.html.twig', [
             'table' => $tableGenerator
-                ->addEntities($pageRepository->findAll(),['id','title','category'])
+                ->addEntities($pageRepository->findAll(),['title','category','published','promoted'])
                 ->addOptionsColumn()
+                ->addIncrementalColumn()
                 ->build()
         ]);
     }
@@ -51,7 +52,7 @@ class AdminPageController extends AbstractController implements CrudControllerIn
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_page_show', methods: ['GET'])]
+    #[Route('/{id}/show', name: 'app_admin_page_show', methods: ['GET'])]
     public function show(Page $page): Response
     {
         return $this->render('admin/page/show.html.twig', [

@@ -9,28 +9,10 @@
 {% endblock %}
 
 {% block body %}
+    <div class="">
 
-    <table>
-        <thead>
-        <tr>
-            {% for header in table.headers %}
-                <th></th>
-            {% endfor %}
-        </tr>
-        </thead>
-        <tbody>
-        {% for row in table.data %}
-            <tr>
-                {% for cell in row %}
-                    <td>
-                        {{ table_cell_render(cell) }}
-                    </td>
-                {% endfor %}
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <a href="{{ path('app_admin_page_new') }}">Create new</a>
 
-
-    <a href="{{ path('app_admin_page_new') }}">Create new</a>
+        {{ tr_table_render(table,'w-full table') }}
+    </div>
 {% endblock %}

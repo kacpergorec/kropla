@@ -1,0 +1,12 @@
+.table{
+  @apply dark:text-white bg-white dark:bg-opacity-0 rounded-lg overflow-hidden
+}
+
+.table{
+  thead > tr{
+    @apply bg-gray-400 bg-opacity-10 rounded-lg text-sm
+  }
+  th,td{
+    @apply px-4 py-2
+  }
+}

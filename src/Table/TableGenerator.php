@@ -3,6 +3,8 @@ declare (strict_types=1);
 
 namespace App\Table;
 
+use App\Helper\ObjectHelper;
+use App\Table\Option\TableOptionGenerator;
 use InvalidArgumentException;
 
 /**
@@ -29,7 +31,7 @@ class TableGenerator
 
         if ($rowId) {
             $this->tableData[$rowId] = $rowData;
-        }else{
+        } else {
             $this->tableData[] = $rowData;
         }
 
@@ -93,19 +95,17 @@ class TableGenerator
 
         $this->addHeaders(array_map(fn($property) => ucfirst($property), $includedProperties));
 
-        $firstEntity = reset($entities);
-
-        if (empty($includedProperties)) {
-            $methods = get_class_methods($firstEntity);
-            $tableGetters = array_filter($methods, fn($getter) => str_starts_with($getter, 'get'));
-        } else {
-            $tableGetters = array_map(fn($property) => 'get' . ucfirst($property), $includedProperties);
-        }
+        $tableGetters = ObjectHelper::findGettersByProperties($entities, $includedProperties);
 
         foreach ($entities as $entity) {
-            $this->addRow(array_map(static function ($getter) use ($entity) {
-                return $entity->$getter();
-            }, $tableGetters), $entity->getId());
+            $this->addRow(
+            //Entity values in row
+                array_map(static function ($getter) use ($entity) {
+                    return $entity->$getter();
+                }, $tableGetters),
+                //Row is identified by entity id
+                $entity->getId()
+            );
         }
 
         return $this;
@@ -158,9 +158,25 @@ class TableGenerator
 
         foreach ($this->tableData as $id => $data) {
 
-            $tableOptions = TableOptionGenerator::generateMany($options,$id);
+            $tableOptions = TableOptionGenerator::generateMany($options, $id);
 
             $this->tableData[$id][] = $tableOptions;
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return TableGenerator
+     */
+    public function addIncrementalColumn(): self
+    {
+        array_unshift($this->tableHeaders,'#');
+
+        $counter = 0;
+
+        foreach ($this->tableData as $id => $data) {
+            array_unshift($this->tableData[$id], ++$counter);
         }
 
         return $this;

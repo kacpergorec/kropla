@@ -12,7 +12,7 @@
 
     {% include 'base/encore.html.twig' %}
 </head>
-<body>
+<body class="">
 <div class="h-screen flex overflow-hidden">
 
     <aside class="min-w-[250px] bg-slate-800 relative h-full z-30 text-white p-6 flex flex-col">
@@ -30,7 +30,7 @@
 
         {% include 'admin/components/header.html.twig' %}
 
-        <main class="bg-slate-100 p-12 py-8 grow">
+        <main class="bg-slate-100 p-12 py-8 grow dark:bg-black">
             {% block body %}
                 <p>
                     Hejka, {{ app.user.firstName }}! 👋

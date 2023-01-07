@@ -11,7 +11,6 @@ use Doctrine\Persistence\ManagerRegistry;
  *
  * @method Page|null find($id, $lockMode = null, $lockVersion = null)
  * @method Page|null findOneBy(array $criteria, array $orderBy = null)
- * @method Page[]    findAll()
  * @method Page[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class PageRepository extends ServiceEntityRepository
@@ -42,6 +41,8 @@ class PageRepository extends ServiceEntityRepository
     public function findAllPublishedAndPromoted(): array
     {
         return $this->createQueryBuilder('p')
+            ->leftJoin('p.category', 'c')
+            ->addSelect('c')
             ->andWhere('p.published = :isPublished')
             ->andWhere('p.promoted = :isPromoted')
             ->setParameter('isPromoted', true)
@@ -50,6 +51,17 @@ class PageRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    public function findAll(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.category', 'c')
+            ->addSelect('c')
+            ->orderBy('p.title', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
 //    public function findOneBySomeField($value): ?Page

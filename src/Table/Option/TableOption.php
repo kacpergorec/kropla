@@ -1,7 +1,7 @@
 <?php
 declare (strict_types=1);
 
-namespace App\Table;
+namespace App\Table\Option;
 
 class TableOption
 {
@@ -15,7 +15,7 @@ class TableOption
 
     public function anchor(): string
     {
-        return "<a href='{$this->optionType}/{$this->identifier}' class='table-option table-option--{$this->optionType}'>{$this->optionType}</a>";
+        return "<a href='{$this->identifier}/{$this->optionType}' class='table-option table-option--{$this->optionType}'>{$this->optionType}</a>";
     }
 
 }
