@@ -3,26 +3,20 @@ declare(strict_types=1);
 
 namespace App\Twig\Runtime;
 
-use App\Table\Cell\BooleanCell;
-use App\Table\Cell\EmptyCell;
-use App\Table\Cell\NumberCell;
-use App\Table\Cell\ObjectCell;
-use App\Table\Cell\StringCell;
+use App\Table\Cell\TableCellRenderer;
 use App\Table\Table;
 use Twig\Extension\RuntimeExtensionInterface;
 
 class TableRendererExtensionRuntime implements RuntimeExtensionInterface
 {
 
+    public function __construct(private TableCellRenderer $tableCellRenderer)
+    {
+    }
+
     private function renderValue($value)
     {
-        return match (gettype($value)) {
-            'boolean' => BooleanCell::render($value),
-            'integer', 'double' => NumberCell::render($value),
-            'object' => ObjectCell::render($value),
-            'NULL' => EmptyCell::render(),
-            default => StringCell::render($value)
-        };
+        return $this->tableCellRenderer->render($value);
     }
 
     public function renderCell(mixed $value, string $extraParameters = '', bool $isHeader = false): string

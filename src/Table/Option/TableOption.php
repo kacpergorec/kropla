@@ -3,6 +3,8 @@ declare (strict_types=1);
 
 namespace App\Table\Option;
 
+use Twig\Environment;
+
 class TableOption
 {
     public const EDIT = 'edit';
@@ -12,20 +14,26 @@ class TableOption
     public const DEFAULT = [self::DETAILS, self::EDIT, self::DELETE];
 
     public function __construct(
-        private string $optionType,
-        private int    $identifier
+        private readonly string $type,
+        private readonly int    $identifier,
     )
     {
     }
 
-    public function anchor(): string
+    /**
+     * @return string
+     */
+    public function getType(): string
     {
-        $href = "{$this->identifier}/{$this->optionType}";
-        $class = "table-options__option table-options__option--{$this->optionType}";
-        $label = ucfirst((string)$this->optionType);
-//        $iconHtml = "<i class='table-options__icon table-options__icon--$label'></i>";
+        return $this->type;
+    }
 
-        return "<a href='$href' class='$class' aria-label='$label'>$label</a>";
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->identifier;
     }
 
 }

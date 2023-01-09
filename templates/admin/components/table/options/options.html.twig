@@ -1,0 +1,5 @@
+<div class="table-options">
+    {% for option in options %}
+        {{ include('admin/components/table/options/'~option.type~'.html.twig') }}
+    {% endfor %}
+</div>

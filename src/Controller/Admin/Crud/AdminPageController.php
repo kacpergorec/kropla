@@ -32,7 +32,7 @@ class AdminPageController extends AbstractController implements CrudControllerIn
             'newPage' => $form,
             'table' => $tableGenerator
                 ->addEntities($pageRepository->findAll(), ['id', 'title', 'category', 'author', 'createdAt', 'published', 'promoted'])
-                ->addOptionsColumn([TableOption::DETAILS, TableOption::EDIT])
+                ->addOptionsColumn([TableOption::DETAILS, TableOption::EDIT, TableOption::DELETE])
                 ->sortBy('createdAt','DESC')
 //                ->addIncrementalColumn()
                 ->build(),

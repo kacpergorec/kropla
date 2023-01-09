@@ -17,20 +17,4 @@ class TableOptionCollection extends ArrayCollection
         parent::add($element);
     }
 
-    public function __toString()
-    {
-        if (count($this) === 0) {
-            return '';
-        }
-
-        $htmlOutput = '<div class="table-options">';
-
-        foreach ($this as $option) {
-            $htmlOutput .= $option->anchor();
-        }
-
-        $htmlOutput .= '</div>';
-
-        return $htmlOutput;
-    }
 }

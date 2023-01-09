@@ -48,6 +48,7 @@ body {
   max-width: 200px;
   transition: .3s ease-in-out;
   &:focus {
+    outline: none;
     max-width: 100%;
   }
 }
