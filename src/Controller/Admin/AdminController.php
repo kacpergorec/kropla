@@ -43,6 +43,6 @@ class AdminController extends AbstractController implements CrudControllerInterf
 
     public static function getPluralName(): string
     {
-        return 'Dashboard';
+        return 'Początek';
     }
 }

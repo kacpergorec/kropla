@@ -4,8 +4,10 @@ declare (strict_types=1);
 namespace App\Table;
 
 use App\Helper\ObjectHelper;
+use App\Table\Option\TableOption;
 use App\Table\Option\TableOptionGenerator;
 use InvalidArgumentException;
+use ReflectionClass;
 
 /**
  * Service for generating HTML tables.
@@ -93,9 +95,19 @@ class TableGenerator
             return $this;
         }
 
-        $this->addHeaders(array_map(fn($property) => ucfirst($property), $includedProperties));
 
         $tableGetters = ObjectHelper::findGettersByProperties($entities, $includedProperties);
+
+        if (!empty($includedProperties)) {
+            $this->addHeaders(array_map(fn($property) => ucfirst($property), $includedProperties));
+        } else {
+            $this->addHeaders(
+                ObjectHelper::findProperties(
+                    object: reset($entities),
+                    asAnArray: true)
+            );
+        }
+
 
         foreach ($entities as $entity) {
             $this->addRow(
@@ -117,7 +129,7 @@ class TableGenerator
      * @param bool $vertical
      * @return TableGenerator
      */
-    public function setVertical(bool $vertical): self
+    public function setVertical(bool $vertical = true): self
     {
         $this->vertical = $vertical;
 
@@ -134,6 +146,7 @@ class TableGenerator
     {
         $numHeaders = count($this->tableHeaders);
         $numCells = count($rowData);
+
         if ($numHeaders !== $numCells) {
             throw new InvalidArgumentException(sprintf(
                 'Number of cells (%d) [%s] does not match number of headers (%d) [%s]',
@@ -151,16 +164,16 @@ class TableGenerator
      * @param array $options
      * @return TableGenerator
      */
-    public function addOptionsColumn(array $options = Table::OPTIONS_DEFAULT): self
+    public function addOptionsColumn(array $options = TableOption::DEFAULT): self
     {
 
-        $this->addHeader('Options');
+        $this->addHeader('');
 
         foreach ($this->tableData as $id => $data) {
 
             $tableOptions = TableOptionGenerator::generateMany($options, $id);
 
-            $this->tableData[$id][] = $tableOptions;
+            $this->tableData[$id]['tg_table_options'] = $tableOptions;
         }
 
         return $this;
@@ -171,12 +184,34 @@ class TableGenerator
      */
     public function addIncrementalColumn(): self
     {
-        array_unshift($this->tableHeaders,'#');
+        array_unshift($this->tableHeaders, '#');
 
         $counter = 0;
 
         foreach ($this->tableData as $id => $data) {
             array_unshift($this->tableData[$id], ++$counter);
+        }
+
+        return $this;
+    }
+
+
+    public function sortBy(string $property = 'id', string $direction = 'ASC'): self
+    {
+        if (!isset(reset($this->tableData)[$property])) {
+            throw new \InvalidArgumentException("Property ' $property ' not found within the table.");
+        }
+
+        usort($this->tableData, function ($a, $b) use ($property) {
+            return $b[$property] <=> $a[$property];
+        });
+
+        $direction = strtoupper($direction);
+
+        if ($direction === 'ASC') {
+            $this->tableData = array_reverse($this->tableData);
+        } elseif ($direction !== 'DESC') {
+            throw new \InvalidArgumentException("Direction must be either DESC or ASC. ($direction given)");
         }
 
         return $this;

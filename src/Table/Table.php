@@ -8,11 +8,6 @@ namespace App\Table;
  */
 class Table
 {
-    public const OPTION_EDIT = 'edit';
-    public const OPTION_SHOW = 'show';
-    public const OPTION_DELETE = 'delete';
-
-    public const OPTIONS_DEFAULT = [self::OPTION_SHOW, self::OPTION_EDIT, self::OPTION_DELETE];
 
     public function __construct(
         private array $headers,

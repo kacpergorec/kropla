@@ -1,0 +1,21 @@
+{% extends 'admin/panel.html.twig' %}
+
+{% block title %}
+    Detale : {{ page.title }}
+{% endblock %}
+{% block header %}
+    Detale : {{ page.title }}
+{% endblock %}
+
+{% block body %}
+    <div class="flex justify-center gap-4">
+        <a class="button " href="{{ path('admin_page_index') }}">Powrót</a>
+        <a class="button" href="{{ path('admin_page_edit',{id: page.id}) }}">
+            Edycja
+        </a>
+        {{ include('admin/page/_delete_form.html.twig') }}
+    </div>
+
+    {{ tr_table_render(table,'table') }}
+
+{% endblock %}

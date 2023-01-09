@@ -19,11 +19,18 @@ class TableOptionCollection extends ArrayCollection
 
     public function __toString()
     {
-        $htmlOutput = '';
-        foreach ($this as $option)
-        {
+        if (count($this) === 0) {
+            return '';
+        }
+
+        $htmlOutput = '<div class="table-options">';
+
+        foreach ($this as $option) {
             $htmlOutput .= $option->anchor();
         }
-       return $htmlOutput;
+
+        $htmlOutput .= '</div>';
+
+        return $htmlOutput;
     }
 }

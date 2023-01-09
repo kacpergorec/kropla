@@ -4,6 +4,7 @@ declare (strict_types=1);
 namespace App\Helper;
 
 use InvalidArgumentException;
+use ReflectionObject;
 
 class ObjectHelper
 {
@@ -30,6 +31,7 @@ class ObjectHelper
         if (!empty($properties)) {
             $foundGetters = array_map(static function ($property) use ($firstEntity) {
 
+                $fqn = $firstEntity::class;
                 $get = 'get' . ucfirst($property);
                 $is = 'is' . ucfirst($property);
 
@@ -51,19 +53,44 @@ class ObjectHelper
 
                 throw new InvalidArgumentException("Property '$property' of the '$fqn' doesn't have a 'is' or 'get' method.");
 
-            }, $properties);
+            }, array_combine($properties,$properties));
         } else {
             //If properties are empty get all class methods
             $methods = get_class_methods($firstEntity);
+
             $foundGetters = array_filter($methods, fn($getter) => str_starts_with($getter, 'get') || str_starts_with($getter, 'is'));
+
         }
 
 
         return $foundGetters;
     }
 
+    public static function findProperties(object $object, bool $asAnArray = false)
+    {
+        $properties = (new ReflectionObject($object))->getProperties();
+        if ($asAnArray) {
+            $properties = array_map(function ($property) {
+              return self::readableMethodString($property->getName());
+            }, $properties);
+        }
+        return $properties;
+    }
+
     public static function findGetterByProperty()
     {
 
+    }
+
+    private static function readableMethodString(string $string)
+    {
+        $beforeUppercaseLetter = '/(?<! )[A-Z]/';
+
+
+        $result = preg_replace($beforeUppercaseLetter, ' $0', $string);
+
+        $result = mb_strtolower($result);
+
+        return ucfirst($result);
     }
 }

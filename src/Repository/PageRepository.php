@@ -58,7 +58,6 @@ class PageRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->leftJoin('p.category', 'c')
             ->addSelect('c')
-            ->orderBy('p.title', 'ASC')
             ->getQuery()
             ->getResult()
             ;

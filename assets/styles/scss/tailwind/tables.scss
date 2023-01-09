@@ -1,12 +1,62 @@
-.table{
-  @apply dark:text-white bg-white dark:bg-opacity-0 rounded-lg overflow-hidden
+.table {
+  @apply border-separate border-spacing-0;
 }
 
-.table{
-  thead > tr{
-    @apply bg-gray-400 bg-opacity-10 rounded-lg text-sm
+.table {
+  tr:not(:last-child) {
+    & > td,
+    & > th {
+      @apply border-b border-gray-200;
+    }
   }
-  th,td{
-    @apply px-4 py-2
+
+  th {
+    @apply border-b border-gray-200 text-xs font-bold text-gray-400;
+  }
+
+  td {
+    @apply font-normal;
+  }
+
+  td,
+  th {
+    @apply px-4 py-3 text-left;
+  }
+
+  .table__bool {
+    @apply block h-5 w-5 rounded-3xl border border-gray-400 border-gray-200 bg-gray-200;
+  }
+
+  .table__bool {
+    &--on {
+      @apply border-emerald-300 bg-emerald-200;
+    }
+  }
+
+  .table__empty-cell {
+    @apply rounded-lg border text-xs py-1 text-gray-400 px-3 before:content-['null'] before:inline
+  }
+
+  &--vertical{
+  }
+}
+
+.table-options {
+  @apply flex w-full justify-end gap-1
+}
+
+.table-options {
+  &__option {
+    @apply button
+  }
+
+  &__option {
+    &--edit {
+      @apply button--light-info
+    }
+
+    &--delete {
+      @apply button--light-danger
+    }
   }
 }

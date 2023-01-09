@@ -1,18 +1,25 @@
 {% extends 'admin/panel.html.twig' %}
 
 {% block title %}
-    - Pages
+    Lista stron
 {% endblock %}
-
 {% block header %}
     Lista stron
 {% endblock %}
 
 {% block body %}
-    <div class="">
+    <div>
+        <div class="flex w-full mb-3">
+            {{ form_start(newPage,{'attr':{'class':'form-control w-full'}}) }}
+            <div class="flex rounded-lg focus-within:drop-shadow-lg transition w-full">
+                {{ form_widget(newPage.submit,{'attr':{'class':'button button--success button--add no-round-right'}}) }}
+                {{ form_widget(newPage.title,{'attr':{'class':'no-round-left'}}) }}
+            </div>
+            {{ form_end(newPage) }}
+        </div>
 
-        <a href="{{ path('app_admin_page_new') }}">Create new</a>
-
-        {{ tr_table_render(table,'w-full table') }}
+        <div class="overflow-x-auto">
+            {{ tr_table_render(table, 'w-full table') }}
+        </div>
     </div>
 {% endblock %}

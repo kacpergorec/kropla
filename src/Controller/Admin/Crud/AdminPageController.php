@@ -4,7 +4,9 @@ namespace App\Controller\Admin\Crud;
 
 use App\Entity\Page;
 use App\Form\PageType;
+use App\Form\NewPageType;
 use App\Repository\PageRepository;
+use App\Table\Option\TableOption;
 use App\Table\TableGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,56 +22,35 @@ class AdminPageController extends AbstractController implements CrudControllerIn
         return 'Strony';
     }
 
-    #[Route('/', name: 'app_admin_page_index', methods: ['GET'])]
-    public function index(PageRepository $pageRepository, TableGenerator $tableGenerator): Response
+    #[Route('/', name: 'admin_page_index', methods: ['GET'])]
+    public function index(Request $request, PageRepository $pageRepository, TableGenerator $tableGenerator): Response
     {
+        $newPage = new Page();
+        $form = $this->createForm(NewPageType::class, $newPage, ['action' => $this->generateUrl('admin_page_new')]);
+
         return $this->render('admin/page/index.html.twig', [
+            'newPage' => $form,
             'table' => $tableGenerator
-                ->addEntities($pageRepository->findAll(),['title','category','published','promoted'])
-                ->addOptionsColumn()
-                ->addIncrementalColumn()
-                ->build()
+                ->addEntities($pageRepository->findAll(), ['id', 'title', 'category', 'author', 'createdAt', 'published', 'promoted'])
+                ->addOptionsColumn([TableOption::DETAILS, TableOption::EDIT])
+                ->sortBy('createdAt','DESC')
+//                ->addIncrementalColumn()
+                ->build(),
         ]);
     }
 
-    #[Route('/new', name: 'app_admin_page_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'admin_page_new', methods: ['GET', 'POST'])]
     public function new(Request $request, PageRepository $pageRepository): Response
     {
         $page = new Page();
-        $form = $this->createForm(PageType::class, $page);
+        $form = $this->createForm(NewPageType::class, $page);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             $pageRepository->save($page, true);
 
-            return $this->redirectToRoute('app_admin_page_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('admin/page/new.html.twig', [
-            'page' => $page,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}/show', name: 'app_admin_page_show', methods: ['GET'])]
-    public function show(Page $page): Response
-    {
-        return $this->render('admin/page/show.html.twig', [
-            'page' => $page,
-        ]);
-    }
-
-    #[Route('/{id}/edit', name: 'app_admin_page_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Page $page, PageRepository $pageRepository): Response
-    {
-        $form = $this->createForm(PageType::class, $page);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $pageRepository->save($page, true);
-
-            return $this->redirectToRoute('app_admin_page_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_page_edit', ['id' => $page->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/page/edit.html.twig', [
@@ -78,14 +59,44 @@ class AdminPageController extends AbstractController implements CrudControllerIn
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_page_delete', methods: ['POST'])]
+    #[Route('/{id}/details', name: 'admin_page_details', methods: ['GET'])]
+    public function details(Page $page, TableGenerator $tableGenerator): Response
+    {
+        return $this->render('admin/page/details.html.twig', [
+            'table' => $tableGenerator
+                ->addEntities([$page])
+                ->setVertical()
+                ->build(),
+            'page' => $page
+        ]);
+    }
+
+    #[Route('/{id}/edit', name: 'admin_page_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Page $page, PageRepository $pageRepository): Response
+    {
+        $form = $this->createForm(PageType::class, $page);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $pageRepository->save($page, true);
+
+            return $this->redirectToRoute('admin_page_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('admin/page/edit.html.twig', [
+            'page' => $page,
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}', name: 'admin_page_delete', methods: ['POST'])]
     public function delete(Request $request, Page $page, PageRepository $pageRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $page->getId(), $request->request->get('_token'))) {
             $pageRepository->remove($page, true);
         }
 
-        return $this->redirectToRoute('app_admin_page_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin_page_index', [], Response::HTTP_SEE_OTHER);
     }
 
 }

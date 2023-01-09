@@ -1,60 +1,73 @@
 {% extends 'base/base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}
+  Log in!
+{% endblock %}
 
 {% block body %}
-    <form method="post" class="m-auto w-full md:w-8/12">
-        {% if error %}
-            <div class="alert alert--danger mt-4">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-        {% endif %}
+  <form method="post" class="m-auto w-full md:w-8/12">
+    {% if error %}
+      <div class="alert alert--danger mt-4">
+        {{ error.messageKey|trans(error.messageData, 'security') }}
+      </div>
+    {% endif %}
 
-        {% if app.user %}
-            <div class="alert alert--info 4 mt-4">
-                Jesteś zalogowany jako {{ app.user.userIdentifier }}. <a class="underline" href="{{ path('admin_logout') }}">Wyloguj się klikając tu.</a>
-            </div>
-        {% endif %}
+    {% if app.user %}
+      <div class="alert alert--info 4 mt-4">
+        Jesteś zalogowany jako {{ app.user.userIdentifier }}. <a class="underline" href="{{ path('admin_logout') }}">Wyloguj
+          się klikając tu.</a>
+      </div>
+    {% endif %}
 
-        <h1 class="text-5xl my-10">
-            Zaloguj się
-        </h1>
+    <h1 class="my-10 text-5xl">
+      Zaloguj się
+    </h1>
 
-        <div class="flex flex-col gap-6">
-            <div class="flex flex-col">
-                <label for="inputEmail" class="text-black dark:text-white text-sm pb-2">
-                    Adres Email
-                </label>
-                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email"
-                       required autofocus class="bg-gray-500 bg-opacity-10 rounded-lg p-3 border-zinc-500 border-opacity-10 focus:ring-secondary focus:border-secondary">
-            </div>
+    <div class="flex flex-col gap-6">
+      <div class="flex flex-col">
+        <label for="inputEmail" class="pb-2 text-sm text-black dark:text-white">
+          Adres Email
+        </label>
+        <input type="email"
+          value="{{ last_username }}"
+          name="email"
+          id="inputEmail"
+          autocomplete="email"
+          required
+          autofocus
+          class="rounded-lg border-zinc-500 border-opacity-10 bg-gray-500 bg-opacity-10 p-3 focus:border-secondary focus:ring-secondary" />
+      </div>
 
+      <div class="flex flex-col">
+        <label for="inputPassword"
+          class="pb-2 text-sm text-black dark:text-white">
+          Hasło
+        </label>
+        <input type="password"
+          name="password"
+          id="inputPassword"
+          autocomplete="current-password"
+          required
+          class="rounded-lg border-zinc-500 border-opacity-10 bg-gray-500 bg-opacity-10 p-3 focus:border-secondary focus:ring-secondary" />
+      </div>
 
-            <div class="flex flex-col">
-                <label for="inputPassword" class="text-black dark:text-white text-sm pb-2">
-                    Hasło
-                </label>
-                <input type="password" name="password" id="inputPassword" autocomplete="current-password" required
-                       class="bg-gray-500 bg-opacity-10 rounded-lg p-3 border-zinc-500 border-opacity-10 focus:ring-secondary focus:border-secondary">
-            </div>
+      <div class="checkbox mb-3">
+        <label class="flex items-center gap-4">
+          <input type="checkbox"
+            name="_remember_me"
+            class="h-7 w-7 rounded-lg border-zinc-500 border-opacity-10 bg-gray-500 bg-opacity-10 text-secondary focus:ring-secondary" />Zapamiętaj
+          mnie
+        </label>
+      </div>
 
+      <button class="w-fit rounded-lg bg-primary p-2 px-20 text-white transition hover:bg-opacity-80"
+        type="submit">
+        Zaloguj
+      </button>
+    </div>
 
-            <div class="checkbox mb-3">
-                <label class="flex items-center gap-4">
-                    <input type="checkbox" name="_remember_me"
-                           class="h-7 w-7 bg-gray-500 bg-opacity-10 border-zinc-500 border-opacity-10 rounded-lg text-secondary focus:ring-secondary">
-                    Zapamiętaj mnie
-                </label>
-            </div>
-
-
-            <button class="bg-primary text-white hover:bg-opacity-80 transition p-2 w-fit px-20 rounded-lg " type="submit">
-                Zaloguj
-            </button>
-        </div>
-
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-
-    </form>
-
-
+    <input type="hidden"
+      name="_csrf_token"
+      value="{{ csrf_token('authenticate') }}" />
+  </form>
 {% endblock %}

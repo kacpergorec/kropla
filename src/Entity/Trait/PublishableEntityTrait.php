@@ -17,7 +17,7 @@ trait PublishableEntityTrait
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?bool $published = null;
+    private ?bool $published = false;
 
     #[ORM\ManyToOne]
     private ?User $author = null;

@@ -29,7 +29,7 @@ class Page
     private ?Category $category = null;
 
     #[ORM\Column]
-    private ?bool $promoted = null;
+    private ?bool $promoted = false;
 
 
     public function getTitle(): ?string

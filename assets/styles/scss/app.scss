@@ -2,17 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'assets/styles/scss/tailwind/_elements';
-@import 'extra/scrollbars';
+@import "variables.scss";
+@import "assets/styles/scss/tailwind/_elements";
+@import "extra/scrollbars";
 @import "@fontsource/sen";
 
 body {
   line-height: 1.75;
-  font-family: 'Sen', sans-serif;
+  font-family: "Sen", sans-serif;
   min-height: 100vh;
 
   display: flex;
   flex-direction: column;
+
+  &.admin {
+    font-family: "Inter", serif;
+    color: $admin-font-color-dark;
+  }
+}
+
+.no-round {
+  @each $direction in ['left', 'right','top','bottom'] {
+    &-#{$direction} {
+      border-bottom-#{$direction}-radius: 0 !important;
+      border-top-#{$direction}-radius: 0 !important;
+    }
+  }
 }
 
 .menu {
@@ -27,3 +42,29 @@ body {
   width: 120px;
   height: auto;
 }
+
+#new_page_title {
+  width: 100%;
+  max-width: 200px;
+  transition: .3s ease-in-out;
+  &:focus {
+    max-width: 100%;
+  }
+}
+
+.button {
+  &--add {
+    padding-left: 2.5rem;
+
+    &::before {
+      position: absolute;
+      font-family: "Phosphor", sans-serif;
+      content: "\fd5f";
+      font-size: 1.3rem;
+      left: 0.7rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+

@@ -1,5 +1,5 @@
 .side-menu {
-  @apply flex flex-col gap-7 overflow-y-auto fixed leading-6
+  @apply fixed flex flex-col gap-7 overflow-y-auto leading-6;
 }
 
 .side-menu {
@@ -12,6 +12,6 @@
   }
 
   &__link {
-    @apply border-l-[1px] border-gray-500 py-1 pl-4 opacity-70 hover:opacity-100 leading-5;
+    @apply border-l-[1px] border-gray-500 py-1 pl-4 leading-5 opacity-70 hover:opacity-100;
   }
 }

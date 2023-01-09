@@ -1,47 +1,61 @@
 <!DOCTYPE html>
 <html style="" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-        Kropla Admin
-        {% block title %}
-
-        {% endblock %}
+      Kropla Admin{% if block('title') is defined %}
+        - {{ block('title') }}
+      {% endif %}
     </title>
-
+    <script src="https://unpkg.com/phosphor-icons"></script>
     {% include 'base/encore.html.twig' %}
-</head>
-<body class="">
-<div class="h-screen flex overflow-hidden">
-
-    <aside class="min-w-[250px] bg-slate-800 relative h-full z-30 text-white p-6 flex flex-col">
+  </head>
+  <body class="admin">
+    <div class="flex h-screen overflow-hidden">
+      <aside class="relative z-30 flex h-full min-w-[250px] flex-col bg-slate-800 p-6 text-white">
         <a href="{{ path('admin_panel') }}" class="font-semibold">
-            <img src="{{ asset('build/images/logo/wide-transparent-darkmode.webp') }}"
-                 alt="Kropla logo" class="logo inline -mt-3 mr-2"/>
-            Admin
+          <img src="{{
+            asset(
+              'build/images/logo/wide-transparent-darkmode.webp'
+            )
+            }}"
+            alt="Kropla logo"
+            class="logo -mt-3 mr-2 inline" />
+          Admin
         </a>
-        <nav class="grow overflow-y-auto mt-8">
-            {% include 'admin/components/menu.html.twig' %}
+        <nav class="mt-8 grow overflow-y-auto">
+          {% include 'admin/components/menu.html.twig' %}
         </nav>
-    </aside>
+      </aside>
+      <div class="relative z-0 flex grow flex-col overflow-y-auto">
+        <header class="sticky top-0 top-0 right-0 z-30 flex w-full items-center justify-between border-b border-gray-200 bg-white px-10 py-4">
+          <h1 class="m-0 text-xl">
+            {% if block('title') is defined %}
+              {{ block('title') }}
+            {% else %}
+              Admin Panel
+            {% endif %}
+          </h1>
+          <div class="flex items-center">
+            <span class="mr-2 h-8 w-8 rounded-3xl bg-pink-500 opacity-50">
 
-    <div class="flex flex-col overflow-y-auto relative z-0 grow">
+            </span>
+            {{ app.user.firstName }}
+          </div>
+        </header>
 
-        {% include 'admin/components/header.html.twig' %}
-
-        <main class="bg-slate-100 p-12 py-8 grow dark:bg-black">
-            {% block body %}
-                <p>
-                    Hejka, {{ app.user.firstName }}! 👋
-                </p>
-                <p>
-                    Zobacz co słychać na twoim blogu:
-                </p>
-            {% endblock %}
+        <main class="grow bg-slate-100 p-12 py-8">
+          {% block body %}
+            <p>
+              Hejka, {{ app.user.firstName }}! 👋
+            </p>
+            <p>
+              Zobacz co słychać na twoim blogu:
+            </p>
+          {% endblock %}
         </main>
+      </div>
     </div>
-
-</div>
-</body>
+  </body>
 </html>

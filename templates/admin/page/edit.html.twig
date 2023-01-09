@@ -1,15 +1,16 @@
 {% extends 'admin/panel.html.twig' %}
 
 {% block title %}
-    - Page / Edit
+    Edytuj : {{ page.title }}
+{% endblock %}
+{% block header %}
+    Edytuj : {{ page.title }}
 {% endblock %}
 
 {% block body %}
-    <h1>Edit Page</h1>
+    {{ include('admin/page/_form.html.twig',{button_label: 'Zapisz'}) }}
 
-    {{ include('admin/page/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_admin_page_index') }}">back to list</a>
+    <a class="button" href="{{ path('admin_page_index') }}">Powrót</a>
 
     {{ include('admin/page/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,0 +1,14 @@
+.button {
+  @apply relative rounded-lg border border-neutral-500 border-opacity-10 bg-neutral-400 bg-opacity-10 px-5 py-3 text-sm text-black dark:text-white;
+}
+
+@each $alert-name, $tailwind-color in $main-colors {
+  .button {
+    &--#{$alert-name} {
+      @apply bg-#{$tailwind-color}-500 border-#{$tailwind-color}-500 text-#{$tailwind-color}-100 dark:bg-#{$tailwind-color}-700 inline-block border-opacity-10 bg-opacity-90;
+    }
+    &--light-#{$alert-name} {
+      @apply bg-#{$tailwind-color}-400 border-#{$tailwind-color}-500 text-#{$tailwind-color}-700 dark:text-#{$tailwind-color}-200 inline-block border-opacity-10 bg-opacity-40;
+    }
+  }
+}
