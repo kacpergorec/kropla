@@ -20,7 +20,8 @@ trait PublishableEntityTrait
     private ?bool $published = false;
 
     #[ORM\ManyToOne]
-    private ?User $author = null;
+    #[ORM\JoinColumn(nullable: false)]
+    private User $author;
 
     public function getId(): ?int
     {
@@ -39,13 +40,12 @@ trait PublishableEntityTrait
         return $this;
     }
 
-    public function getAuthor(): ?User
+    public function getAuthor(): User
     {
         return $this->author;
     }
 
-
-    public function setAuthor(?User $author): void
+    public function setAuthor(User $author): void
     {
         $this->author = $author;
     }

@@ -14,7 +14,7 @@ class NewPageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('submit', SubmitType::class, ['label' => 'form.submit'])
+            ->add('submit', SubmitType::class, ['label' => 'form.add_page'])
             ->add('title', TextType::class, ['label' => false, 'attr' => [
                 'placeholder' => 'Lorem ipsum'
             ]]);

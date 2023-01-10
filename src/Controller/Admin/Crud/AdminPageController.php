@@ -33,7 +33,7 @@ class AdminPageController extends AbstractController implements CrudControllerIn
             'table' => $tableGenerator
                 ->addEntities($pageRepository->findAll(), ['id', 'title', 'category', 'author', 'createdAt', 'published', 'promoted'])
                 ->addOptionsColumn([TableOption::DETAILS, TableOption::EDIT, TableOption::DELETE])
-                ->sortBy('createdAt','DESC')
+                ->sortBy('createdAt', 'DESC')
 //                ->addIncrementalColumn()
                 ->build(),
         ]);
@@ -47,9 +47,8 @@ class AdminPageController extends AbstractController implements CrudControllerIn
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
+            $page->setAuthor($this->getUser());
             $pageRepository->save($page, true);
-
             return $this->redirectToRoute('admin_page_edit', ['id' => $page->getId()], Response::HTTP_SEE_OTHER);
         }
 

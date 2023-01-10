@@ -130,6 +130,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __toString(): string
     {
-        return sprintf('(%s) %s %s', $this->getEmail(), $this->getFirstName(), $this->getLastName());
+        return $this->getFirstName() ;// . ' ' . substr($this->getLastName(),0,1).'.';
     }
 }
