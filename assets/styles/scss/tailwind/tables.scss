@@ -12,11 +12,7 @@
 
 
   th {
-    @apply border-b border-gray-200 text-xs font-bold text-gray-400;
-  }
-
-  td {
-    @apply font-normal;
+    @apply border-b border-gray-200 text-xs font-black text-gray-400;
   }
 
   td,
@@ -46,21 +42,21 @@
 }
 
 .table-options {
-  @apply flex w-full justify-end gap-1
+  @apply flex w-full justify-end gap-3
 }
 
 .table-options {
   &__option {
-    @apply button
+    @apply button--naked
   }
 
   &__option {
     &--edit {
-      @apply button--light-info
+      @apply button--naked-info
     }
 
     &--delete {
-      @apply button--light-danger
+      @apply button--naked-danger
     }
   }
 }

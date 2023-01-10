@@ -1,4 +1,4 @@
-$text-types : [
+$text-types: [
   'text',
   'password',
   'datetime',
@@ -6,13 +6,35 @@ $text-types : [
   'email',
   'url',
   'search',
-  'tel'
+  'tel',
 ];
 
-.form-control{
+.form-control {
   @each $type in $text-types {
-    input[type="#{$type}"]{
-      @apply rounded-lg border-neutral-900 border-opacity-10 bg-white bg-opacity-80 p-3 focus:ring-0
+    input[type="#{$type}"] {
+      @apply rounded-lg border-neutral-800 border-opacity-20 bg-white bg-opacity-80 p-2 focus:ring-0 px-5 w-full
     }
+  }
+
+  textarea{
+    @apply h-full shadow-lg shadow-slate-200
+  }
+
+  textarea, select {
+    @apply rounded-lg border-neutral-800 border-opacity-20 bg-white bg-opacity-80 p-2 focus:ring-0 px-5 w-full
+  }
+
+  label {
+    @apply block text-sm font-semibold mb-2 text-gray-500
+  }
+
+  label + {
+    & select, input, textarea {
+      @apply mb-5
+    }
+  }
+
+  input[type="checkbox"], input[type="radio"] {
+    @apply shadow-md checked:bg-green-400 w-14 h-8 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-green-400 focus:ring-2
   }
 }

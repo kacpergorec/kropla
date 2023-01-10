@@ -28,10 +28,10 @@ class AdminPageController extends AbstractController implements CrudControllerIn
         $newPage = new Page();
         $form = $this->createForm(NewPageType::class, $newPage, ['action' => $this->generateUrl('admin_page_new')]);
 
-        return $this->render('admin/page/index.html.twig', [
+        return $this->render('admin/crud/index.html.twig', [
             'newPage' => $form,
             'table' => $tableGenerator
-                ->addEntities($pageRepository->findAll(), ['id', 'title', 'category', 'author', 'createdAt', 'published', 'promoted'])
+                ->addEntities($pageRepository->findAll(), ['title', 'category', 'author', 'createdAt', 'published', 'promoted'])
                 ->addOptionsColumn([TableOption::DETAILS, TableOption::EDIT, TableOption::DELETE])
                 ->sortBy('createdAt', 'DESC')
 //                ->addIncrementalColumn()
@@ -52,7 +52,7 @@ class AdminPageController extends AbstractController implements CrudControllerIn
             return $this->redirectToRoute('admin_page_edit', ['id' => $page->getId()], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin/page/edit.html.twig', [
+        return $this->render('admin/crud/edit.html.twig', [
             'page' => $page,
             'form' => $form,
         ]);
@@ -61,7 +61,7 @@ class AdminPageController extends AbstractController implements CrudControllerIn
     #[Route('/{id}/details', name: 'admin_page_details', methods: ['GET'])]
     public function details(Page $page, TableGenerator $tableGenerator): Response
     {
-        return $this->render('admin/page/details.html.twig', [
+        return $this->render('admin/crud/details.html.twig', [
             'table' => $tableGenerator
                 ->addEntities([$page])
                 ->setVertical()
@@ -76,13 +76,14 @@ class AdminPageController extends AbstractController implements CrudControllerIn
         $form = $this->createForm(PageType::class, $page);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
             $pageRepository->save($page, true);
 
             return $this->redirectToRoute('admin_page_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin/page/edit.html.twig', [
+        return $this->render('admin/crud/edit.html.twig', [
             'page' => $page,
             'form' => $form,
         ]);

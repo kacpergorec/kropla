@@ -1,5 +1,9 @@
 .button {
-  @apply relative rounded-lg border border-neutral-500 border-opacity-10 bg-neutral-400 bg-opacity-10 px-5 py-3 text-sm text-black dark:text-white;
+  @apply relative rounded-lg border border-neutral-300 bg-white px-5 py-3 text-sm dark:text-white flex justify-center items-center;
+}
+
+.button--naked{
+  @apply transition border-transparent relative rounded-lg border hover:border-neutral-300 border-opacity-0 bg-opacity-0 hover:bg-white px-5 py-3 text-sm dark:text-white flex justify-center items-center;
 }
 
 @each $alert-name, $tailwind-color in $main-colors {
@@ -9,6 +13,9 @@
     }
     &--light-#{$alert-name} {
       @apply bg-#{$tailwind-color}-400 border-#{$tailwind-color}-500 text-#{$tailwind-color}-700 dark:text-#{$tailwind-color}-200 inline-block border-opacity-10 bg-opacity-40;
+    }
+    &--naked-#{$alert-name} {
+      @apply transition border-transparent bg-opacity-0 hover:bg-#{$tailwind-color}-400 border-opacity-0 hover:border-#{$tailwind-color}-500 hover:text-#{$tailwind-color}-700 dark:text-#{$tailwind-color}-200 inline-block hover:border-opacity-10 hover:bg-opacity-40;
     }
   }
 }

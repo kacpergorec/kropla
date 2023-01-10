@@ -4,5 +4,7 @@
   <input type="hidden"
     name="_token"
     value="{{ csrf_token('delete' ~ page.id) }}" />
-  <button class="button button--light-danger">Usuń</button>
+  <button class="{{ class|default('button button--light-danger') }}">
+    <i class="ph-trash-bold scale-150 mx-2"></i> {{ text|default('') }}
+  </button>
 </form>

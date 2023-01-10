@@ -17,6 +17,8 @@ body {
 
   &.admin {
     font-family: "Inter", serif;
+    font-weight: 500;
+    font-size: 14px;
     color: $admin-font-color-dark;
   }
 }
@@ -45,11 +47,11 @@ body {
 
 #new_page_title {
   width: 100%;
-  max-width: 200px;
+  max-width: 400px;
   transition: .3s ease-in-out;
   &:focus {
     outline: none;
-    max-width: 100%;
+    max-width: 60%;
   }
 }
 
