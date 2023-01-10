@@ -30,7 +30,7 @@ Currently under development.
 4. `npm run watch`  Run SASS watchers and Tailwind JIT compiler
 5. To use **'Prettier'** run `npm run format:twig && npm run format:styles`
 
-## TODO
+## TODOs
 
 - PHPUnit integration
 - Search functionality
