@@ -3,9 +3,9 @@ declare (strict_types=1);
 
 namespace App\Table\Cell;
 
+use App\Helper\RouteHelper;
 use App\Table\Option\TableOptionCollection;
 use DateTime;
-use DateTimeZone;
 use IntlDateFormatter;
 use Twig\Environment;
 
@@ -20,7 +20,8 @@ class ObjectCell
 
         if ($object instanceof TableOptionCollection) {
             return $twig->render('admin/components/table/options/options.html.twig',[
-                'options' => $object
+                'options' => $object,
+                'routes' => RouteHelper::extractCrudRoutesFromPreviousController()
             ]);
         }
 

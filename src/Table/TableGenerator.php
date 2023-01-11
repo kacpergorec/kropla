@@ -199,7 +199,7 @@ class TableGenerator
     public function sortBy(string $property = 'id', string $direction = 'ASC'): self
     {
         if (!isset(reset($this->tableData)[$property])) {
-            throw new \InvalidArgumentException("Property ' $property ' not found within the table.");
+            throw new \InvalidArgumentException("Property '$property' not found within the table.");
         }
 
         usort($this->tableData, function ($a, $b) use ($property) {

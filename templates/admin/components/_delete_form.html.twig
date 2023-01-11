@@ -1,10 +1,10 @@
 <form method="post" class="inline-block"
-  action="{{ path('admin_page_delete',{id: page.id}) }}"
+  action="{{ path(routes.delete,{id: entity.id}) }}"
   onsubmit="return confirm('Czy napewno chcesz usunąć tę pozycję?');">
   <input type="hidden"
     name="_token"
-    value="{{ csrf_token('delete' ~ page.id) }}" />
+    value="{{ csrf_token('delete' ~ entity.id) }}" />
   <button class="{{ class|default('button button--light-danger') }}">
-    <i class="ph-trash-bold scale-150 mx-2"></i> {{ text|default('') }}
+    <i class="ph-trash-bold scale-150"></i>
   </button>
 </form>

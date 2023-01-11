@@ -3,7 +3,7 @@ declare (strict_types=1);
 
 namespace App\Menu;
 
-use App\Controller\Admin\Crud\CrudControllerInterface;
+use App\Controller\Admin\AdminControllerInterface;
 use App\Exception\ClassMethodNotImplementedException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Finder;
@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouterInterface;
 
 /**
- * A service to generate menu based on Controllers that implement CrudControllerInterface.
+ * A service to generate menu based on Controllers that implement AdminControllerInterface.
  */
 class AdminMenuGenerator
 {
@@ -30,7 +30,7 @@ class AdminMenuGenerator
 
     /**
      * TODO: Implement caching
-     * Matches the application routes with controllers that implement CrudControllerInterface.
+     * Matches the application routes with controllers that implement AdminControllerInterface.
      * @return Route[] An array of routes.
      */
     public function getRoutes(): array
@@ -42,7 +42,7 @@ class AdminMenuGenerator
         $menuRoutes = [];
 
         /**
-         * @var CrudControllerInterface $crudController
+         * @var AdminControllerInterface $crudController
          */
         foreach ($crudControllers as $crudController) {
 
@@ -88,18 +88,25 @@ class AdminMenuGenerator
     }
 
     /**
-     * Finds controllers that implement CrudControllerInterface.
-     * @return string[] An array of controller FQNs that implement the CrudControllerInterface.
+     * Finds controllers that implement AdminControllerInterface.
+     * @return string[] An array of controller FQNs that implement the AdminControllerInterface.
      * @throws ClassMethodNotImplementedException Throws an error if the target method was not found within the class.
      */
     private function findCrudControllers(): array
     {
+
         return array_filter($this->getControllers(),
             static function ($controller) {
-                if (!method_exists($controller, self::TARGET_METHOD)) {
-                    throw new ClassMethodNotImplementedException($controller,self::TARGET_METHOD);
+
+                $interfaces = class_implements($controller);
+
+                $hasInterface = isset($interfaces[AdminControllerInterface::class]);
+
+                if ($hasInterface && !method_exists($controller, self::TARGET_METHOD)) {
+                    throw new ClassMethodNotImplementedException($controller, self::TARGET_METHOD);
                 }
-                return new $controller() instanceof CrudControllerInterface;
+
+                return $hasInterface;
             }
         );
     }

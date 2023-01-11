@@ -1,1 +1,2 @@
-{% include 'admin/components/_delete_form.html.twig' with {'page' : option, 'class' : 'table-options__option table-options__option--'~option.type} %}
+{% set entity = {'id' : option.id} %}
+{% include 'admin/components/_delete_form.html.twig'%}

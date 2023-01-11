@@ -53,17 +53,21 @@ class ObjectHelper
 
                 throw new InvalidArgumentException("Property '$property' of the '$fqn' doesn't have a 'is' or 'get' method.");
 
-            }, array_combine($properties,$properties));
+            }, $properties);
         } else {
             //If properties are empty get all class methods
             $methods = get_class_methods($firstEntity);
 
             $foundGetters = array_filter($methods, fn($getter) => str_starts_with($getter, 'get') || str_starts_with($getter, 'is'));
 
+            //get class properties from found getters
+            $properties = array_map(fn($getter) => lcfirst(preg_replace("/\b(get|is)/", '', $getter)), $foundGetters);
+
         }
 
+        // return combined array of [property => getter] - properties as keys are used in the sorting.
 
-        return $foundGetters;
+        return array_combine($properties, $foundGetters);
     }
 
     public static function findProperties(object $object, bool $asAnArray = false)
@@ -71,7 +75,7 @@ class ObjectHelper
         $properties = (new ReflectionObject($object))->getProperties();
         if ($asAnArray) {
             $properties = array_map(function ($property) {
-              return self::readableMethodString($property->getName());
+                return self::readableMethodString($property->getName());
             }, $properties);
         }
         return $properties;
