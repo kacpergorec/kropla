@@ -30,5 +30,12 @@ services:
     App\Cache\CacheManager:
         arguments: [ '%kernel.environment%' ]
 
+    App\EventSubscriber\HashPasswordSubscriber:
+        tags:
+            - { name: doctrine.event_subscriber }
+        arguments:
+            -  '@security.user_password_hasher'
+
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

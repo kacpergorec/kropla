@@ -100,8 +100,7 @@ class TableGenerator
 
 
         if (!empty($includedProperties)) {
-            $properties = array_map(fn($property)=> ObjectHelper::readableMethodString($property),$includedProperties);
-
+            $includedProperties = array_map(fn($property)=> ObjectHelper::readableMethodString($property),$includedProperties);
             $this->addHeaders(array_map(fn($property) => ucfirst($property), $includedProperties));
         } else {
             $properties = ObjectHelper::findProperties(reset($entities),true);
