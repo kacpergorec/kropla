@@ -34,7 +34,7 @@ class BaseAdminCrudController extends AbstractController
         $form = $this->createForm($formType, $newEntity);
 
         return $this->render('admin/crud/index.html.twig', [
-            'newPage' => $form,
+            'form' => $form,
             'table' => $table,
             'routes' => $routes
         ]);
@@ -79,11 +79,11 @@ class BaseAdminCrudController extends AbstractController
     }
 
 
-    public function renderCrudEdit($entity, string $pageType): Response
+    public function renderCrudEdit($entity, string $formType): Response
     {
         $routes = RouteHelper::extractCrudRoutesFromPreviousController();
 
-        $form = $this->createForm($pageType, $entity);
+        $form = $this->createForm($formType, $entity);
         $form->handleRequest($this->request);
 
 
@@ -96,6 +96,7 @@ class BaseAdminCrudController extends AbstractController
         return $this->render('admin/crud/edit.html.twig', [
             'entity' => $entity,
             'form' => $form,
+            'routes' => $routes
         ]);
     }
 

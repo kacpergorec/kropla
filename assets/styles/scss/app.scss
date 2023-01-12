@@ -24,6 +24,7 @@ body {
 }
 
 .no-round {
+  border-radius: 0 !important;
   @each $direction in ['left', 'right','top','bottom'] {
     &-#{$direction} {
       border-bottom-#{$direction}-radius: 0 !important;
@@ -45,13 +46,19 @@ body {
   height: auto;
 }
 
-#new_page_title {
+.animated-text-input {
   width: 100%;
   max-width: 400px;
   transition: .3s ease-in-out;
+  border-left-width: 0;
+
   &:focus {
     outline: none;
     max-width: 60%;
+  }
+
+  &:last-of-type {
+    border-radius: 0 0.5rem 0.5rem 0 !important;
   }
 }
 

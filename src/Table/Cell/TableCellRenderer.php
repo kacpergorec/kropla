@@ -4,6 +4,7 @@ declare (strict_types=1);
 namespace App\Table\Cell;
 
 use Twig\Environment;
+use UnexpectedValueException;
 
 class TableCellRenderer
 {
@@ -13,12 +14,16 @@ class TableCellRenderer
 
     public function render(mixed $value): string
     {
-        return match (gettype($value)) {
+        $type = gettype($value);
+
+        return match ($type) {
             'boolean' => BooleanCell::render($value),
             'integer', 'double' => NumberCell::render($value),
             'object' => ObjectCell::render($value, $this->twig),
+            'string' => StringCell::render($value),
             'NULL' => EmptyCell::render(),
-            default => StringCell::render($value)
+            'array' => ArrayCell::render($value),
+            default => throw new UnexpectedValueException("Table cell of the type $type is not supported")
         };
     }
 }

@@ -1,19 +1,32 @@
 {% extends 'admin/panel.html.twig' %}
 
 {% block title %}
-    Lista stron
+    Lista
 {% endblock %}
 
 
 {% block body %}
+
     <div>
         <div class="flex w-full mb-3">
-            {{ form_start(newPage,{'attr':{'class':'form-control w-full'}}) }}
-            <div class="flex rounded-lg focus-within:drop-shadow-lg transition w-full">
-                {{ form_widget(newPage.submit,{'attr':{'class':'button button--success button--add no-round-right'}}) }}
-                {{ form_widget(newPage.title,{'attr':{'class':'no-round-left'}}) }}
+
+            {{ form_start(form,{'attr':{'class':'form-control w-full'}}) }}
+            <div class="flex  focus-within:drop-shadow-lg transition w-full ring-inset">
+                {% for formElement in form %}
+
+                    {% if formElement.vars.block_prefixes[1] == 'submit' %}
+                        {% set class = 'button button--success button--add no-round-right' %}
+                    {% elseif formElement.vars.block_prefixes[1] == 'text' %}
+                        {% set class = 'animated-text-input no-round' %}
+                    {% endif %}
+
+                    {% if formElement.vars.block_prefixes[1] != 'hidden' %}
+                        {{ form_widget(formElement,{'attr':{'class':class|default('')}}) }}
+                    {% endif %}
+
+                {% endfor %}
             </div>
-            {{ form_end(newPage) }}
+            {{ form_end(form) }}
         </div>
 
 

@@ -98,13 +98,16 @@ class TableGenerator
 
         $tableGetters = ObjectHelper::findGettersByProperties($entities, $includedProperties);
 
+
         if (!empty($includedProperties)) {
+            $properties = array_map(fn($property)=> ObjectHelper::readableMethodString($property),$includedProperties);
+
             $this->addHeaders(array_map(fn($property) => ucfirst($property), $includedProperties));
         } else {
+            $properties = ObjectHelper::findProperties(reset($entities),true);
+
             $this->addHeaders(
-                ObjectHelper::findProperties(
-                    object: reset($entities),
-                    asAnArray: true)
+                array_map(fn($property)=> ObjectHelper::readableMethodString($property),$properties)
             );
         }
 
@@ -149,9 +152,8 @@ class TableGenerator
 
         if ($numHeaders !== $numCells) {
             throw new InvalidArgumentException(sprintf(
-                'Number of cells (%d) [%s] does not match number of headers (%d) [%s]',
+                'Number of cells (%d) does not match number of headers (%d) [%s]',
                 $numCells,
-                implode(',', $rowData),
                 $numHeaders,
                 implode(',', $this->tableHeaders)
             ));
@@ -199,7 +201,7 @@ class TableGenerator
     public function sortBy(string $property = 'id', string $direction = 'ASC'): self
     {
         if (!isset(reset($this->tableData)[$property])) {
-            throw new \InvalidArgumentException("Property '$property' not found within the table.");
+            throw new \InvalidArgumentException("Cannot sort the table by: '$property'. The property is not found within the table.");
         }
 
         usort($this->tableData, function ($a, $b) use ($property) {

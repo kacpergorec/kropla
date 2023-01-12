@@ -7,8 +7,8 @@ use App\Entity\Page;
 use App\Form\PageType;
 use App\Form\NewPageType;
 use App\Repository\PageRepository;
+use App\Table\Option\TableOption;
 use App\Table\TableGenerator;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -62,16 +62,16 @@ class AdminPageController extends BaseAdminCrudController implements AdminContro
     }
 
     #[Route('/{id}/edit', name: 'admin_page_edit', methods: ['GET', 'POST'])]
-    public function edit(Page $page, PageRepository $pageRepository): Response
+    public function edit(Page $page): Response
     {
         return $this->renderCrudEdit(
             entity: $page,
-            pageType: PageType::class,
+            formType: PageType::class,
         );
     }
 
     #[Route('/{id}', name: 'admin_page_delete', methods: ['POST'])]
-    public function delete(Request $request, Page $page, PageRepository $pageRepository): Response
+    public function delete(Page $page): Response
     {
         return $this->processCrudDelete(
             entity: $page,

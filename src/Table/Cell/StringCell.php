@@ -3,10 +3,22 @@ declare (strict_types=1);
 
 namespace App\Table\Cell;
 
+use App\Helper\StringHelper;
+
 class StringCell
 {
-    public static function render(string $value): string
+    private const WORD_LIMIT = 10;
+
+    public static function render(string $string): string
     {
-        return (string) $value;
+        //normalize string
+        $string = strip_tags($string);
+
+        if (str_word_count($string) > self::WORD_LIMIT + 4) {
+            return StringHelper::cutStringToWords($string,self::WORD_LIMIT);
+        }
+        
+        return $string;
     }
+
 }

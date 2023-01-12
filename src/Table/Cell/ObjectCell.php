@@ -6,6 +6,7 @@ namespace App\Table\Cell;
 use App\Helper\RouteHelper;
 use App\Table\Option\TableOptionCollection;
 use DateTime;
+use Doctrine\ORM\PersistentCollection;
 use IntlDateFormatter;
 use Twig\Environment;
 
@@ -23,6 +24,10 @@ class ObjectCell
                 'options' => $object,
                 'routes' => RouteHelper::extractCrudRoutesFromPreviousController()
             ]);
+        }
+
+        if ($object instanceof PersistentCollection) {
+            return (string)$object->count();
         }
 
         return (string)$object;

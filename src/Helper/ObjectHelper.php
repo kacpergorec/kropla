@@ -4,6 +4,7 @@ declare (strict_types=1);
 namespace App\Helper;
 
 use InvalidArgumentException;
+use ReflectionClass;
 use ReflectionObject;
 
 class ObjectHelper
@@ -16,7 +17,7 @@ class ObjectHelper
      * @return string[] An array of getter method names.
      * @throws InvalidArgumentException If the input is invalid or the class does not have the specified property.
      */
-    public static function findGettersByProperties(array $objects, array $properties): array
+    public static function findGettersByProperties(array $objects, array $properties = []): array
     {
         $firstEntity = reset($objects);
 
@@ -27,47 +28,26 @@ class ObjectHelper
             ));
         }
 
-        //If properties are not empty
-        if (!empty($properties)) {
-            $foundGetters = array_map(static function ($property) use ($firstEntity) {
+        if (empty($properties)) {
+            $properties = self::findProperties($firstEntity, true);
+        }
 
-                $fqn = $firstEntity::class;
-                $get = 'get' . ucfirst($property);
-                $is = 'is' . ucfirst($property);
-
-                if (!property_exists($firstEntity, $property)) {
-                    throw new InvalidArgumentException(sprintf(
-                        "The '%s' class doesn't have a '%s' property.",
-                        $firstEntity::class,
-                        $property
-                    ));
-                }
-
-                if (method_exists($firstEntity, $get)) {
-                    return $get;
-                }
-
-                if (method_exists($firstEntity, $is)) {
-                    return $is;
-                }
-
-                throw new InvalidArgumentException("Property '$property' of the '$fqn' doesn't have a 'is' or 'get' method.");
-
-            }, $properties);
-        } else {
-            //If properties are empty get all class methods
-            $methods = get_class_methods($firstEntity);
-
-            $foundGetters = array_filter($methods, fn($getter) => str_starts_with($getter, 'get') || str_starts_with($getter, 'is'));
-
-            //get class properties from found getters
-            $properties = array_map(fn($getter) => lcfirst(preg_replace("/\b(get|is)/", '', $getter)), $foundGetters);
-
+        $result = [];
+        foreach ($properties as $property) {
+            $methodName = "get" . ucfirst($property);
+            if (method_exists($firstEntity, $methodName)) {
+                $result[$property] = $methodName;
+                continue;
+            }
+            $methodName = "is" . ucfirst($property);
+            if (method_exists($firstEntity, $methodName)) {
+                $result[$property] = $methodName;
+            }
         }
 
         // return combined array of [property => getter] - properties as keys are used in the sorting.
 
-        return array_combine($properties, $foundGetters);
+        return $result;
     }
 
     public static function findProperties(object $object, bool $asAnArray = false)
@@ -75,24 +55,18 @@ class ObjectHelper
         $properties = (new ReflectionObject($object))->getProperties();
         if ($asAnArray) {
             $properties = array_map(function ($property) {
-                return self::readableMethodString($property->getName());
+                return $property->getName();
             }, $properties);
         }
         return $properties;
     }
 
-    public static function findGetterByProperty()
-    {
 
-    }
-
-    private static function readableMethodString(string $string)
+    public static function readableMethodString(string $string)
     {
         $beforeUppercaseLetter = '/(?<! )[A-Z]/';
 
-
         $result = preg_replace($beforeUppercaseLetter, ' $0', $string);
-
         $result = mb_strtolower($result);
 
         return ucfirst($result);

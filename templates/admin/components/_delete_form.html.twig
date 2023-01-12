@@ -4,7 +4,7 @@
   <input type="hidden"
     name="_token"
     value="{{ csrf_token('delete' ~ entity.id) }}" />
-  <button class="{{ class|default('button button--light-danger') }}">
+  <button class="{{ buttonClass|default('button button--light-danger') }}">
     <i class="ph-trash-bold scale-150"></i>
   </button>
 </form>
