@@ -33,7 +33,7 @@ class HashPasswordSubscriber implements EventSubscriber
         $manager = $args->getObjectManager();
 
         if (!$entity instanceof User) {
-            throw new InvalidArgumentException('Persisted entity must be instance of User');
+            return;
         }
 
         $this->hashPassword($entity);

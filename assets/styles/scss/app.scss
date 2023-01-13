@@ -64,6 +64,7 @@ body {
 
 .button {
   &--add {
+    min-width: 160px;
     padding-left: 2.5rem;
 
     &::before {

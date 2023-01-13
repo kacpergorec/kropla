@@ -46,7 +46,7 @@ class AdminMenuGenerator
          */
         foreach ($crudControllers as $crudController) {
 
-            $title = $crudController::getPluralName();
+            $title = $crudController::getAdminName();
 //            Foreach is faster than array_filter (stackoverflow.com/q/6791479)
 //            $menu[$title] = array_filter((array)$routeCollection, static function (Route $route) use ($crudController) {
 //                return $route->getDefault('_controller') === $crudController . '::' . self::TARGET_METHOD;

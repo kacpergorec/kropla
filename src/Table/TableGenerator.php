@@ -3,6 +3,7 @@ declare (strict_types=1);
 
 namespace App\Table;
 
+use App\Helper\ArrayHelper;
 use App\Helper\ObjectHelper;
 use App\Table\Option\TableOption;
 use App\Table\Option\TableOptionGenerator;
@@ -95,32 +96,9 @@ class TableGenerator
             return $this;
         }
 
+        $this->addHeadersFromEntities($entities, $includedProperties);
 
-        $tableGetters = ObjectHelper::findGettersByProperties($entities, $includedProperties);
-
-
-        if (!empty($includedProperties)) {
-            $includedProperties = array_map(fn($property)=> ObjectHelper::readableMethodString($property),$includedProperties);
-            $this->addHeaders(array_map(fn($property) => ucfirst($property), $includedProperties));
-        } else {
-            $properties = ObjectHelper::findProperties(reset($entities),true);
-
-            $this->addHeaders(
-                array_map(fn($property)=> ObjectHelper::readableMethodString($property),$properties)
-            );
-        }
-
-
-        foreach ($entities as $entity) {
-            $this->addRow(
-            //Entity values in row
-                array_map(static function ($getter) use ($entity) {
-                    return $entity->$getter();
-                }, $tableGetters),
-                //Row is identified by entity id
-                $entity->getId()
-            );
-        }
+        $this->addRowsFromEntities($entities, $includedProperties);
 
         return $this;
     }
@@ -199,6 +177,10 @@ class TableGenerator
 
     public function sortBy(string $property = 'id', string $direction = 'ASC'): self
     {
+        if (empty($this->tableData)) {
+            return $this;
+        };
+
         if (!isset(reset($this->tableData)[$property])) {
             throw new \InvalidArgumentException("Cannot sort the table by: '$property'. The property is not found within the table.");
         }
@@ -231,5 +213,38 @@ class TableGenerator
             $this->tableData,
             $this->vertical
         );
+    }
+
+    private function addHeadersFromEntities(array $entities, array $includedProperties): void
+    {
+        //If included properties contain their translations ex. ['El título' =>'title','Las paginas' => 'pages']
+        if (ArrayHelper::arrayHasCustomKeys($includedProperties)){
+            $headers = array_keys($includedProperties);
+        } elseif (!empty($includedProperties)) {
+            $includedProperties = array_map(fn($property) => ObjectHelper::readableMethodString($property), $includedProperties);
+            $headers = array_map(fn($property) => ucfirst($property), $includedProperties);
+        } else {
+            $properties = ObjectHelper::findProperties(reset($entities), true);
+            $headers = array_map(fn($property) => ObjectHelper::readableMethodString($property), $properties);
+        }
+
+
+        $this->addHeaders($headers);
+
+    }
+
+    private function addRowsFromEntities(array $entities, array $includedProperties): void
+    {
+        $tableGetters = ObjectHelper::findGettersByProperties($entities, $includedProperties);
+        foreach ($entities as $entity) {
+            $this->addRow(
+            //Entity values in row
+                array_map(static function ($getter) use ($entity) {
+                    return $entity->$getter();
+                }, $tableGetters),
+                //Row is identified by entity id
+                $entity->getId()
+            );
+        }
     }
 }

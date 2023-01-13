@@ -13,5 +13,5 @@ interface AdminControllerInterface
     /**
      * @return string The plural name of the controller used in Admin to display menu.
      */
-    public static function getPluralName() : string;
+    public static function getAdminName() : string;
 }

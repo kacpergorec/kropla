@@ -14,9 +14,9 @@ use App\Form\NewUserType;
 #[Route('/admin/user')]
 class AdminUserController extends BaseAdminCrudController implements AdminControllerInterface
 {
-    public static function getPluralName(): string
+    public static function getAdminName(): string
     {
-        return 'User';
+        return 'Użytkownicy';
     }
 
     #[Route('/', name: 'admin_user_index', methods: ['GET'])]

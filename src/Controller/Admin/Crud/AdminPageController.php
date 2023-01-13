@@ -7,7 +7,6 @@ use App\Entity\Page;
 use App\Form\PageType;
 use App\Form\NewPageType;
 use App\Repository\PageRepository;
-use App\Table\Option\TableOption;
 use App\Table\TableGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminPageController extends BaseAdminCrudController implements AdminControllerInterface
 {
 
-    public static function getPluralName(): string
+    public static function getAdminName(): string
     {
         return 'Strony';
     }

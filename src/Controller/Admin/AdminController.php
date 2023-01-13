@@ -40,7 +40,7 @@ class AdminController extends AbstractController implements AdminControllerInter
     {
     }
 
-    public static function getPluralName(): string
+    public static function getAdminName(): string
     {
         return 'Początek';
     }

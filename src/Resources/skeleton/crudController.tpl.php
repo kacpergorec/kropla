@@ -14,7 +14,7 @@ use App\Form\New<?=$entity?>Type;
 #[Route('/admin/<?= $entityLowercase ?>')]
 class <?= $controller['className'] ?> extends BaseAdminCrudController implements AdminControllerInterface
 {
-    public static function getPluralName(): string
+    public static function getAdminName(): string
     {
         return '<?= $entity ?>';
     }
