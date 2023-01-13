@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Admin\Controller;
 
+use App\Admin\Interface\AdminControllerInterface;
 use App\Menu\AdminMenuGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;

@@ -3,7 +3,7 @@ declare (strict_types=1);
 
 namespace App\Helper;
 
-use App\Controller\Admin\AdminControllerInterface;
+use App\Admin\Interface\AdminControllerInterface;
 
 class RouteHelper
 {

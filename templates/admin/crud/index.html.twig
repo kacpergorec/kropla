@@ -15,13 +15,14 @@
                 {% for formElement in form %}
 
                     {% if formElement.vars.block_prefixes[1] == 'submit' %}
-                        {% set class = 'button button--success button--add no-round-right' %}
-                    {% elseif formElement.vars.block_prefixes[1] == 'text' %}
-                        {% set class = 'animated-text-input no-round' %}
+                        {% set classes = ['button', 'button--success', 'button--add' ,'no-round-right'] %}
+                    {% else %}
+{#                    {% elseif formElement.vars.block_prefixes[1] == 'text' %}#}
+                        {% set classes = ['animated-text-input','no-round'] %}
                     {% endif %}
 
                     {% if formElement.vars.block_prefixes[1] != 'hidden' %}
-                        {{ form_widget(formElement,{'attr':{'class':class|default('')}}) }}
+                        {{ form_widget(formElement,{'attr':{'class':classes|join(' ')}}) }}
                     {% endif %}
 
                 {% endfor %}

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Controller\Admin\Crud;
+namespace App\Admin\Controller;
 
-use App\Controller\Admin\AdminControllerInterface;
+use App\Admin\Controller\Base\BaseAdminCrudController;
+use App\Admin\Interface\AdminControllerInterface;
 use App\Entity\Page;
 use App\Form\PageType;
 use App\Form\NewPageType;

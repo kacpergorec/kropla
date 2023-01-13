@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Controller\Admin\Crud;
+namespace App\Admin\Controller;
 
+use App\Admin\Controller\Base\BaseAdminCrudController;
 use App\Entity\User;
-use App\Controller\Admin\AdminControllerInterface;
+use App\Admin\Interface\AdminControllerInterface;
 use App\Repository\UserRepository;
 use App\Table\TableGenerator;
 use Symfony\Component\Routing\Annotation\Route;

@@ -1,7 +1,7 @@
 <?php
 declare (strict_types=1);
 
-namespace App\Controller\Admin\Crud;
+namespace App\Admin\Controller\Base;
 
 use App\Helper\RouteHelper;
 use App\Table\Table;

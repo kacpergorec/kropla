@@ -2,7 +2,7 @@
 
 namespace App\Twig\Runtime;
 
-use App\Controller\Admin\AdminControllerInterface;
+use App\Admin\Interface\AdminControllerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Twig\Extension\RuntimeExtensionInterface;
