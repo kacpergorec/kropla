@@ -3,6 +3,7 @@
 namespace App\Admin\Controller;
 
 use App\Admin\Controller\Base\BaseAdminCrudController;
+use App\Admin\Metadata\AdminMetadata;
 use App\Entity\Category;
 use App\Admin\Interface\AdminControllerInterface;
 use App\Repository\CategoryRepository;
@@ -15,9 +16,14 @@ use App\Form\NewCategoryType;
 #[Route('/admin/category')]
 class AdminCategoryController extends BaseAdminCrudController implements AdminControllerInterface
 {
-    public static function getAdminName(): string
+    public static function getAdminMetadata(): AdminMetadata
     {
-        return 'Kategorie';
+        return new AdminMetadata(
+            'Kategorie',
+            2,
+            'ph-list-numbers-light',
+            'admin.categories.description'
+        );
     }
 
     #[Route('/', name: 'admin_category_index', methods: ['GET'])]

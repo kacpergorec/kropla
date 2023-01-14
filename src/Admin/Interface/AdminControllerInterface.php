@@ -3,6 +3,7 @@ declare (strict_types=1);
 
 namespace App\Admin\Interface;
 
+use App\Admin\Metadata\AdminMetadata;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -11,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 interface AdminControllerInterface
 {
     /**
-     * @return string The plural name of the controller used in Admin to display menu.
+     * @return AdminMetadata The admin metadata, plural name in menu, icons, admin menu ordering etc.
      */
-    public static function getAdminName() : string;
+    public static function getAdminMetadata() : AdminMetadata;
 }

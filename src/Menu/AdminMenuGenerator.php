@@ -42,23 +42,22 @@ class AdminMenuGenerator
 
         $menuRoutes = [];
 
+
         /**
          * @var AdminControllerInterface $crudController
          */
         foreach ($crudControllers as $crudController) {
 
-            $title = $crudController::getAdminName();
-//            Foreach is faster than array_filter (stackoverflow.com/q/6791479)
-//            $menu[$title] = array_filter((array)$routeCollection, static function (Route $route) use ($crudController) {
-//                return $route->getDefault('_controller') === $crudController . '::' . self::TARGET_METHOD;
-//            });
-
             // If registered route has the same FQN::method as CRUD controller FQN::method, save it to menu.
-            foreach ($routeCollection as $route) {
+            foreach ($routeCollection as $routeName => $route) {
                 if ($route->getDefault('_controller') === $crudController . '::' . self::TARGET_METHOD) {
-                    $menuRoutes[$title] = $this->router->match($route->getPath())['_route'];
+                    $menuRoutes[$routeName]['route'] = $routeName;
+                    $menuRoutes[$routeName]['title'] = $crudController::getAdminMetadata()->getLabel();
+                    $menuRoutes[$routeName]['iconClass'] = $crudController::getAdminMetadata()->getIconClass();
+                    $menuRoutes[$routeName]['customProperties'] = $crudController::getAdminMetadata()->getCustomProperties();
                 }
             }
+
         }
 
         return $menuRoutes;
@@ -94,10 +93,10 @@ class AdminMenuGenerator
      * @return string[] An array of controller FQNs that implement the AdminControllerInterface.
      * @throws ClassMethodNotImplementedException Throws an error if the target method was not found within the class.
      */
-    private function findCrudControllers(): array
+    private function findCrudControllers($orderByMetadata = true): array
     {
 
-        return array_filter($this->getControllers(),
+        $adminControllers = array_filter($this->getControllers(),
             static function ($controller) {
 
                 $interfaces = class_implements($controller);
@@ -111,5 +110,16 @@ class AdminMenuGenerator
                 return $hasInterface;
             }
         );
+
+        if ($orderByMetadata) {
+            usort($adminControllers, static function($a, $b) {
+                $orderA = $a::getAdminMetadata()->getOrder();
+                $orderB = $b::getAdminMetadata()->getOrder();
+
+                return $orderA <=> $orderB;
+            });
+        }
+
+        return $adminControllers;
     }
 }

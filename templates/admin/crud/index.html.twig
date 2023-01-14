@@ -1,23 +1,36 @@
 {% extends 'admin/panel.html.twig' %}
 
 {% block title %}
-    Lista - {{ get_crud_name() }}
+    <div class="flex items-center gap-3.5">
+        {{ get_crud_icon('text-3xl w-10 opacity-50') }} Lista <i class="ph-caret-right-thin"></i> {{ get_crud_name() }}
+    </div>
 {% endblock %}
 
 
 {% block body %}
 
     <div>
-        <div class="flex w-full mb-3">
+        <div class="flex flex-col gap-8 w-full mb-3">
+
+            {% if get_crud_description() is not empty %}
+                <div class="relative hover:opacity-70 cursor-pointer hover:scale-[99%] transition cookie-popup bg-indigo-200 p-6 rounded-lg hidden" data-cookie="{{ get_crud_name()|lower|url_encode }}">
+                    <i class="ph-x-fill  cursor-pointer absolute right-6 top-4 text-2xl"></i>
+                    <h1 class="text-2xl mb-1"> {{ get_crud_name() }}</h1>
+                    <p>
+                        {{ get_crud_description()|trans }}
+                    </p>
+                </div>
+            {% endif %}
+
 
             {{ form_start(form,{'attr':{'class':'form-control w-full'}}) }}
             <div class="flex  focus-within:drop-shadow-lg transition w-full ring-inset">
                 {% for formElement in form %}
 
                     {% if formElement.vars.block_prefixes[1] == 'submit' %}
-                        {% set classes = ['button', 'button--success', 'button--add' ,'no-round-right'] %}
+                        {% set classes = ['button', 'button--indigo', 'button--add' ,'no-round-right'] %}
                     {% else %}
-{#                    {% elseif formElement.vars.block_prefixes[1] == 'text' %}#}
+                        {#                    {% elseif formElement.vars.block_prefixes[1] == 'text' %} #}
                         {% set classes = ['animated-text-input','no-round'] %}
                     {% endif %}
 

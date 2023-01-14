@@ -12,6 +12,10 @@ import './bootstrap';
 import './styles/scss/app.scss';
 
 
+// Sass
+import './js/cookies.js';
+
+
 function setSideMenuWidth() {
     let sideMenu = document.querySelector('.side-menu');
     const parent = sideMenu.parentElement;

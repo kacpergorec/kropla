@@ -3,6 +3,7 @@
 namespace App\Admin\Controller;
 
 use App\Admin\Controller\Base\BaseAdminCrudController;
+use App\Admin\Metadata\AdminMetadata;
 use App\Entity\Post;
 use App\Admin\Interface\AdminControllerInterface;
 use App\Repository\PostRepository;
@@ -15,9 +16,14 @@ use App\Form\NewPostType;
 #[Route('/admin/post')]
 class AdminPostController extends BaseAdminCrudController implements AdminControllerInterface
 {
-    public static function getAdminName(): string
+    public static function getAdminMetadata(): AdminMetadata
     {
-        return 'Blog';
+        return new AdminMetadata(
+            'Blog',
+            3,
+            'ph-article-medium-light',
+            'admin.post.description'
+        );
     }
 
     #[Route('/', name: 'admin_post_index', methods: ['GET'])]

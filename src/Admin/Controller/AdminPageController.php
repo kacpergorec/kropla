@@ -4,6 +4,7 @@ namespace App\Admin\Controller;
 
 use App\Admin\Controller\Base\BaseAdminCrudController;
 use App\Admin\Interface\AdminControllerInterface;
+use App\Admin\Metadata\AdminMetadata;
 use App\Entity\Page;
 use App\Form\PageType;
 use App\Form\NewPageType;
@@ -16,9 +17,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminPageController extends BaseAdminCrudController implements AdminControllerInterface
 {
 
-    public static function getAdminName(): string
+    public static function getAdminMetadata(): AdminMetadata
     {
-        return 'Strony';
+        return new AdminMetadata(
+            'Strony',
+            1,
+            'ph-browsers-light',
+            'admin.page.description'
+        );
     }
 
     #[Route('/', name: 'admin_page_index', methods: ['GET'])]

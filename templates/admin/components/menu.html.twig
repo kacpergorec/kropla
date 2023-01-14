@@ -1,10 +1,10 @@
 <ul>
-  {% for item in knp_menu_get('admin') %}
-    <li class="text-slate-300">
-      <a href="{{ item.uri }}"
-        class="block rounded-lg border border-slate-700 border-opacity-0 px-5 py-3 transition hover:border-opacity-50 hover:bg-slate-700 hover:bg-opacity-10 hover:text-white">
-        {{ item.name }}
-      </a>
-    </li>
-  {% endfor %}
+    {% for item in knp_menu_get('admin') %}
+            <a href="{{ item.uri }}"
+               class="group flex items-center rounded-lg border border-slate-700 border-opacity-0 px-5 py-3 transition hover:border-opacity-50 hover:bg-slate-700 hover:bg-opacity-10 hover:text-white">
+
+                <i class="{{ item.attributes.iconClass }} transition text-blue-300 opacity-30 group-hover:opacity-100 text-3xl flex items-center w-12 h-0"></i> <span>{{ item.name }}</span>
+            </a>
+        </li>
+    {% endfor %}
 </ul>

@@ -3,6 +3,7 @@
 namespace App\Admin\Controller;
 
 use App\Admin\Interface\AdminControllerInterface;
+use App\Admin\Metadata\AdminMetadata;
 use App\Menu\AdminMenuGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,6 +12,16 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class AdminController extends AbstractController implements AdminControllerInterface
 {
+
+    public static function getAdminMetadata(): AdminMetadata
+    {
+        return new AdminMetadata(
+            'Panel',
+            0,
+            'ph-gauge-light'
+        );
+    }
+
     #[Route('/admin', name: 'admin_panel')]
     public function index(AdminMenuGenerator $menuGenerator): Response
     {
@@ -41,8 +52,4 @@ class AdminController extends AbstractController implements AdminControllerInter
     {
     }
 
-    public static function getAdminName(): string
-    {
-        return 'Początek';
-    }
 }

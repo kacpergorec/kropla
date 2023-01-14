@@ -3,6 +3,7 @@
 namespace App\Admin\Controller;
 
 use App\Admin\Controller\Base\BaseAdminCrudController;
+use App\Admin\Metadata\AdminMetadata;
 use App\Entity\User;
 use App\Admin\Interface\AdminControllerInterface;
 use App\Repository\UserRepository;
@@ -15,9 +16,13 @@ use App\Form\NewUserType;
 #[Route('/admin/user')]
 class AdminUserController extends BaseAdminCrudController implements AdminControllerInterface
 {
-    public static function getAdminName(): string
+    public static function getAdminMetadata(): AdminMetadata
     {
-        return 'Użytkownicy';
+        return new AdminMetadata(
+            'Użytkownicy',
+                iconClass: 'ph-users-light',
+                description: 'admin.user.description'
+        );
     }
 
     #[Route('/', name: 'admin_user_index', methods: ['GET'])]

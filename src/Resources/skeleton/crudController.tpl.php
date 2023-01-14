@@ -14,9 +14,13 @@ use App\Form\New<?=$entity?>Type;
 #[Route('/admin/<?= $entityLowercase ?>')]
 class <?= $controller['className'] ?> extends BaseAdminCrudController implements AdminControllerInterface
 {
-    public static function getAdminName(): string
+    public static function getAdminMetadata(): AdminMetadata
     {
-        return '<?= $entity ?>';
+        return new AdminMetadata(
+            '<?= $entity?>',
+            10,
+            'ph-list-users-light'
+        );
     }
 
     #[Route('/', name: 'admin_<?= $entityLowercase ?>_index', methods: ['GET'])]

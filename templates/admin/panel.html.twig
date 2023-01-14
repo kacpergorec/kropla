@@ -45,14 +45,11 @@
           </div>
         </header>
 
-        <main class="grow bg-slate-100 p-12 py-8">
+        <main class="grow bg-slate-100 px-16 py-8">
           {% block body %}
-            <p>
-              Hejka, {{ app.user.firstName }}! 👋
-            </p>
-            <p>
-              Zobacz co słychać na twoim blogu:
-            </p>
+
+            {{ include('admin/dashboard.html.twig') }}
+
           {% endblock %}
         </main>
       </div>

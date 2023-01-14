@@ -11,8 +11,8 @@ use Symfony\Component\Routing\Route;
 class AdminMenuBuilder
 {
     public function __construct(
-        private FactoryInterface $factory,
-        private CacheManager     $cacheManager,
+        private FactoryInterface   $factory,
+        private CacheManager       $cacheManager,
         private AdminMenuGenerator $adminMenuGenerator,
     )
     {
@@ -30,10 +30,15 @@ class AdminMenuBuilder
         /**
          * @var $route Route
          */
-        foreach ($routes as $crudTitle => $route) {
-            $mainMenu->addChild($crudTitle, [
-                'route' => $route
-            ]);
+        foreach ($routes as $route) {
+            $mainMenu
+                ->addChild($route['title'], [
+                    'route' => $route['route'],
+                ])
+                ->setAttribute('iconClass', $route['iconClass'])
+                ->setAttribute('customProperties', $route['customProperties'])
+            ;
+
         }
 
         return $mainMenu;

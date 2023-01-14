@@ -57,4 +57,9 @@ class Post
         $this->slug = $slug;
     }
 
+    public function __toString(): string
+    {
+        return 'Artykuł';
+    }
+
 }
