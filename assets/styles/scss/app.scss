@@ -7,6 +7,9 @@
 @import "extra/scrollbars";
 @import "@fontsource/sen";
 
+
+// ROOT
+
 body {
   line-height: 1.75;
   font-family: "Sen", sans-serif;
@@ -14,6 +17,10 @@ body {
 
   display: flex;
   flex-direction: column;
+
+  p:first-child{
+    margin-top: 0.9rem;
+  }
 
   &.admin {
     font-family: "Inter", serif;
@@ -23,6 +30,9 @@ body {
   }
 }
 
+
+// ADMIN UTILS
+
 .no-round {
   border-radius: 0 !important;
   @each $direction in ['left', 'right','top','bottom'] {
@@ -31,19 +41,6 @@ body {
       border-top-#{$direction}-radius: 0 !important;
     }
   }
-}
-
-.menu {
-  padding-block: 1rem;
-}
-
-.side-menu {
-  height: calc(100vh - 10rem);
-}
-
-.logo {
-  width: 120px;
-  height: auto;
 }
 
 .animated-text-input {
@@ -77,4 +74,26 @@ body {
       transform: translateY(-50%);
     }
   }
+}
+
+// MISC
+
+.menu {
+  padding-block: 1rem;
+}
+
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+
+// PAGE CONTENT
+
+#page-title{
+  padding-inline: 0.6rem;
+}
+
+#page-content{
+  padding-inline: 0.6rem;
 }

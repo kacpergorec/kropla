@@ -1,0 +1,9 @@
+admin:
+    user:
+        description: Ta sekcja panelu administratora pozwala na zarządzanie użytkownikami twojej witryny. Możesz tworzyć nowych użytkowników, edytować istniejących lub usuwać ich. Możesz także dostosowywać uprawnienia użytkowników, takie jak poziom dostępu, i inne.
+    page:
+        description: Ta sekcja panelu administratora pozwala na zarządzanie stronami twojej witryny. Możesz tworzyć nowe strony, edytować istniejące lub. Możesz także dostosowywać ustawienia strony, takie jak szablon, metadane i inne.
+    categories:
+        description: Ta sekcja panelu administratora pozwala na zarządzanie kategoriami twojej witryny. Możesz tworzyć nowe kategorie, edytować istniejące lub usuwać je. Możesz także dostosowywać ustawienia kategorii.
+    post:
+        description: Ta sekcja panelu administratora pozwala na zarządzanie postami na twoim blogu. Możesz tworzyć nowe posty, edytować istniejące lub usuwać je. Możesz także dostosowywać ustawienia postów, takie jak tytuł seo, tagi, i inne.

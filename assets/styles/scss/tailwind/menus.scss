@@ -1,14 +1,14 @@
 .side-menu {
-  @apply fixed flex flex-col gap-7 overflow-y-auto leading-6;
+  @apply flex flex-col gap-7 overflow-y-auto leading-6;
 }
 
 .side-menu {
   &__section {
-    @apply flex flex-col;
+    @apply flex flex-col w-full;
   }
 
   &__header {
-    @apply mb-3 font-semibold;
+    @apply mb-3 font-semibold text-lg;
   }
 
   &__link {

@@ -7,6 +7,7 @@ use App\Cache\CacheManager;
 use App\Repository\CategoryRepository;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
+use Knp\Menu\MenuItem;
 
 class SideMenuBuilder
 {
@@ -28,7 +29,9 @@ class SideMenuBuilder
             fn() => $this->categoryRepository->withPublishedChildPagesNotPromoted()
         );
 
+
         foreach ($categories as $category) {
+
             $categoryTitle = $category->getTitle();
 
             $sideMenu->addChild($categoryTitle);
@@ -39,6 +42,7 @@ class SideMenuBuilder
                         'routeParameters' => ['slug' => $page->getSlug()],
                     ]
                 );
+
             }
         }
 

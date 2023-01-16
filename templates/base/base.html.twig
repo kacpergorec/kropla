@@ -1,44 +1,46 @@
 <!DOCTYPE html>
 <html lang="{{ app.request.locale }}" class="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <title>
-      {% block title %}
-        Welcome!
-      {% endblock %}
+        {% block title %}
+            Welcome!
+        {% endblock %}
     </title>
 
     <link rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>" />
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>"/>
 
     {% include 'base/encore.html.twig' %}
-  </head>
+</head>
 
-  {# high contrast mode --> from-black to-darkgray bg-fixed dark:bg-gradient-to-tr dark:bg-black #}
-  {# <body class="from-black to-darkgray bg-fixed dark:bg-gradient-to-tr dark:bg-black text-gray-700 dark:text-gray-500"> #}
-  <body class="text-gray-700 dark:bg-zinc-900 dark:text-gray-400">
-    {% include 'base/header.html.twig' %}
+{# high contrast mode --> from-black to-darkgray bg-fixed dark:bg-gradient-to-tr dark:bg-black #}
+<body class="text-gray-700 dark:bg-zinc-900 dark:text-gray-400 flex flex-col">
 
-    <div class="container mx-auto mt-8 flex grow px-3">
-      <div class="flex grow">
-        {# Side naviagiton menu #}
-        <aside class="basis-1/6">
-          {% include 'components/menu/side_menu.html.twig' %}
-        </aside>
+{% include 'base/header.html.twig' %}
 
-        {# Main Content #}
-        <main class="flex basis-4/6 flex-col px-6">
-          {% block body %}
+<div class="container mx-auto flex grow pt-8">
 
-          {% endblock %}
-        </main>
+    <aside class="basis-1/6 sticky top-20 self-start">
+        {% include 'components/menu/side_menu.html.twig' %}
+    </aside>
 
-        <aside class="basis-1/6"></aside>
-      </div>
-    </div>
 
-    {% include 'base/footer.html.twig' %}
-  </body>
+    <main class="basis-4/6 flex grow flex-col px-6">
+        {% block body %}
+
+        {% endblock %}
+    </main>
+
+
+    <aside class="basis-1/6 sticky top-20 self-start">
+        Progress tracking here
+    </aside>
+</div>
+
+
+{% include 'base/footer.html.twig' %}
+</body>
 </html>

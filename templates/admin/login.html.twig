@@ -13,7 +13,7 @@
     {% endif %}
 
     {% if app.user %}
-      <div class="alert alert--info 4 mt-4">
+      <div class="alert alert--info 4 mb-4">
         Jesteś zalogowany jako {{ app.user.userIdentifier }}. <a class="underline" href="{{ path('admin_logout') }}">Wyloguj
           się klikając tu.</a>
       </div>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
       Kropla Admin{% if block('title') is defined %}
-        - {{ block('title') }}
+        - {{ block('title')|striptags }}
       {% endif %}
     </title>
     <script src="https://unpkg.com/phosphor-icons"></script>
@@ -38,7 +38,7 @@
             {% endif %}
           </h1>
           <div class="flex items-center">
-            <span class="mr-2 h-8 w-8 rounded-3xl bg-pink-500 opacity-50">
+            <span class="mr-2 h-8 w-8 rounded-3xl bg-slate-600 ">
 
             </span>
             {{ app.user.firstName }}
