@@ -1,58 +1,71 @@
 <!DOCTYPE html>
 <html style="" lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Kropla Admin{% if block('title') is defined %}
+        Kropla Admin{% if block('title') is defined %}
         - {{ block('title')|striptags }}
-      {% endif %}
+        {% endif %}
     </title>
     <script src="https://unpkg.com/phosphor-icons"></script>
     {% include 'base/encore.html.twig' %}
-  </head>
-  <body class="admin">
-    <div class="flex h-screen overflow-hidden">
-      <aside class="relative z-30 flex h-full min-w-[250px] flex-col bg-slate-800 p-6 text-white">
+</head>
+<body class="admin">
+<div class="flex h-screen overflow-hidden">
+    <aside class="relative z-30 flex h-full min-w-[250px] flex-col bg-slate-800 p-6 text-white">
         <a href="{{ path('admin_panel') }}" class="font-semibold">
-          <img src="{{
-            asset(
-              'build/images/logo/wide-transparent-darkmode.webp'
-            )
-            }}"
-            alt="Kropla logo"
-            class="logo -mt-3 mr-2 inline" />
-          Admin
+            <img src="{{ asset('build/images/logo/wide-transparent-darkmode.webp') }}"
+                 alt="Kropla logo"
+                 class="logo -mt-3 mr-2 inline" />
+            Admin
         </a>
         <nav class="mt-8 grow overflow-y-auto">
-          {% include 'admin/components/menu.html.twig' %}
+            {% include 'admin/components/menu.html.twig' %}
         </nav>
-      </aside>
-      <div class="relative z-0 flex grow flex-col overflow-y-auto">
+    </aside>
+    <div class="relative z-0 flex grow flex-col overflow-y-auto">
         <header class="sticky top-0 top-0 right-0 z-30 flex w-full items-center justify-between border-b border-gray-200 bg-white px-12 py-4">
-          <h1 class="m-0 text-xl">
-            {% if block('title') is defined %}
-              {{ block('title') }}
-            {% else %}
-              Admin Panel
-            {% endif %}
-          </h1>
-          <div class="flex items-center">
-            <span class="mr-2 h-8 w-8 rounded-3xl bg-slate-600 ">
+            <h1 class="m-0 text-xl">
+                {% if block('title') is defined %}
+                    {{ block('title') }}
+                {% else %}
+                    Admin Panel
+                {% endif %}
+            </h1>
+            <div class="flex items-center">
 
-            </span>
-            {{ app.user.firstName }}
-          </div>
+                <label class="relative" aria-label="Profile menu">
+                    <div class="flex items-center border border-slate-200 rounded-lg hover:bg-slate-200 px-3 py-1 cursor-pointer">
+                        <img class="mr-3"
+                             src="https://api.dicebear.com/5.x/bottts-neutral/svg?radius=50&size=24&seed=a{{ app.user|url_encode }}"
+                             alt="User avatar">
+                        {{ app.user }}
+                        <i class="ph-caret-down ml-2 text-gray-400"></i>
+                    </div>
+                    <div>
+                        <input type="checkbox" class="peer sr-only">
+                        <div class="absolute right-0 top-[110%] shadow-lg z-50 w-48 py-2 border border-slate-200 rounded-lg bg-white hidden peer-checked:block">
+                            <a href="{{ path('admin_user_edit',{'id': app.user.id}) }}"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Edit profile</a>
+                            <a href="{{ path('admin_logout') }}"
+                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">Logout</a>
+                        </div>
+                    </div>
+                </label>
+
+
+            </div>
         </header>
 
         <main class="grow bg-slate-100 px-16 py-8">
-          {% block body %}
+            {% block body %}
 
-            {{ include('admin/dashboard.html.twig') }}
+                {{ include('admin/dashboard.html.twig') }}
 
-          {% endblock %}
+            {% endblock %}
         </main>
-      </div>
     </div>
-  </body>
+</div>
+</body>
 </html>

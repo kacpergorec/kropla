@@ -76,17 +76,6 @@ Encore
     // uncomment if you're having problems with a jQuery plugin
     //.autoProvidejQuery()
 
-    //logos loading
-    .addPlugin(new CopyWebpackPlugin({
-        patterns: [
-            {
-                from: './assets/images/logo/',
-                to: 'images/logo/',
-            },
-        ],
-    }))
-
-
 
 ;
 
