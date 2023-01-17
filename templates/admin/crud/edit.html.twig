@@ -13,6 +13,14 @@
         {% include form.vars.attr.template %}
     {% else %}
         {{ form_start(form) }}
+        {{ form_help(form) }}
+
+        {% for error in form.vars.errors %}
+            <div class="alert alert--danger mb-5">
+                {{ error.message }}
+            </div>
+        {% endfor %}
+
         <div class="w-full flex justify-end gap-3">
             <a class="button" href="{{ path(routes.index) }}">Powrót</a>
 {#            <a class="button" href="">#}
@@ -20,6 +28,7 @@
 {#            </a>#}
             <button class="button button--info">Zapisz</button>
         </div>
+        {{ form_rest(form) }}
         {{ form_end(form) }}
     {% endif %}
 

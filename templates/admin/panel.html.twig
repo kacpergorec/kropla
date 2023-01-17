@@ -10,12 +10,15 @@
     </title>
     <script src="https://unpkg.com/phosphor-icons"></script>
     {% include 'base/encore.html.twig' %}
+
+    {% block head %}
+    {% endblock %}
 </head>
 <body class="admin">
 <div class="flex h-screen overflow-hidden">
     <aside class="relative z-30 flex h-full min-w-[250px] flex-col bg-slate-800 p-6 text-white">
         <a href="{{ path('admin_panel') }}" class="font-semibold">
-            <img src="{{ asset('build/images/logo/wide-transparent-darkmode.webp') }}"
+            <img src="{{ asset('images/logo/wide-transparent-darkmode.webp') }}"
                  alt="Kropla logo"
                  class="logo -mt-3 mr-2 inline" />
             Admin

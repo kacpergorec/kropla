@@ -1,0 +1,23 @@
+{% block role_row %}
+
+
+    {{ form_errors(form) }}
+    {{ form_help(form) }}
+    {{ form_label(form) }}
+    {{ form_widget(form,{'attr': {'class':'tag-input'}}) }}
+
+
+    {#   TODO: Move scripts from this template     #}
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+    <script>
+      new Tagify(document.querySelector("input.tag-input"), {
+        // Adds brackets and quotes to match the roles schema ex. ["ROLE_ADMIN", ROLE_]
+        originalInputValueFormat: items => `["${items.map(i => i.value.toUpperCase()).join("\",\"")}"]`,
+        // Transforms tags to uppercase and checks if there is ROLE_ at the beginning
+        transformTag: i => i.value = !i.value.startsWith("ROLE_") ? "ROLE_" + i.value.toUpperCase() : i.value.toUpperCase(),
+        pattern: /^ROLE_[A-Z]+$/
+      });
+    </script>
+{% endblock %}

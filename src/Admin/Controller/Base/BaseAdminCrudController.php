@@ -86,6 +86,8 @@ class BaseAdminCrudController extends AbstractController
         $form = $this->createForm($formType, $entity);
         $form->handleRequest($this->request);
 
+        dump($form->getErrors());
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->getRepository($entity::class)->save($entity, true);
