@@ -9,10 +9,17 @@
         {% endif %}
     </title>
     <script src="https://unpkg.com/phosphor-icons"></script>
-    {% include 'base/encore.html.twig' %}
 
-    {% block head %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        {{ encore_entry_link_tags('admin') }}
     {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {{ encore_entry_script_tags('admin') }}
+    {% endblock %}
+
 </head>
 <body class="admin">
 <div class="flex h-screen overflow-hidden">
