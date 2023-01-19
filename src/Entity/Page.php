@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PageRepository;
 use App\Entity\Trait\PublishableEntityTrait;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -15,10 +16,10 @@ class Page
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $content = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 1024, nullable: true)]
     private ?string $redirectUrl = null;
 
     #[Gedmo\Slug(fields: ['title'])]
@@ -30,6 +31,9 @@ class Page
 
     #[ORM\Column]
     private ?bool $promoted = false;
+
+    #[ORM\Column(type: Types::JSON, nullable: true)]
+    private array $tags = [];
 
 
     public function getTitle(): ?string
@@ -104,6 +108,18 @@ class Page
 
     public function __toString(): string
     {
-       return $this->getTitle();
+        return $this->getTitle();
+    }
+
+    public function getTags(): array
+    {
+        return $this->tags;
+    }
+
+    public function setTags(?array $tags): self
+    {
+        $this->tags = $tags;
+
+        return $this;
     }
 }

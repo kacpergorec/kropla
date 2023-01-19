@@ -23,6 +23,9 @@ class Post
     #[ORM\Column(unique: true)]
     private string $slug;
 
+    #[ORM\Column(type: Types::JSON, nullable:true)]
+    private array $tags = [];
+
     public function getTitle(): ?string
     {
         return $this->title;
@@ -60,6 +63,18 @@ class Post
     public function __toString(): string
     {
         return 'Artykuł';
+    }
+
+    public function getTags(): array
+    {
+        return $this->tags;
+    }
+
+    public function setTags(array $tags): self
+    {
+        $this->tags = $tags;
+
+        return $this;
     }
 
 }
