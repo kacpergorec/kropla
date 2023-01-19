@@ -20,14 +20,15 @@ class PageType extends AbstractType
     {
         parent::buildView($view, $form, $options);
     }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('title', TextType::class, ['label' => false])
-            ->add('content', TextareaType::class, ['label' => false, 'required' => false])
-            ->add('redirectUrl', UrlType::class, [ 'required' => false])
-            ->add('promoted', CheckboxType::class, [ 'required' => false])
-            ->add('published', CheckboxType::class, [ 'required' => false])
+            ->add('content', CKEditorType::class, ['label' => false, 'required' => false,])
+            ->add('redirectUrl', UrlType::class, ['required' => false])
+            ->add('promoted', CheckboxType::class, ['required' => false])
+            ->add('published', CheckboxType::class, ['required' => false])
             ->add('category')
             ->add('author');
     }

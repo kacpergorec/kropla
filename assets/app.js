@@ -6,5 +6,5 @@ import './bootstrap';
 import './styles/scss/app.scss';
 
 // Javascript
-import './js/ckeditor.js';
+import './js/ckeditor-block-baloon.js';
 import './js/cookies.js';

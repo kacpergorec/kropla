@@ -958,6 +958,32 @@
     "@ckeditor/ckeditor5-typing" "^35.4.0"
     "@ckeditor/ckeditor5-ui" "^35.4.0"
 
+"@ckeditor/ckeditor5-build-classic@^35.4.0":
+  "integrity" "sha512-DDvhtoOggo2B7/M+XPReIkFOvkXzzjTP3d4dzakODIFhZ5Y633U0NlIwTeMP/KVvTfzmesW9FJzER0fbVosQgA=="
+  "resolved" "https://registry.npmjs.org/@ckeditor/ckeditor5-build-classic/-/ckeditor5-build-classic-35.4.0.tgz"
+  "version" "35.4.0"
+  dependencies:
+    "@ckeditor/ckeditor5-adapter-ckfinder" "^35.4.0"
+    "@ckeditor/ckeditor5-autoformat" "^35.4.0"
+    "@ckeditor/ckeditor5-basic-styles" "^35.4.0"
+    "@ckeditor/ckeditor5-block-quote" "^35.4.0"
+    "@ckeditor/ckeditor5-ckbox" "^35.4.0"
+    "@ckeditor/ckeditor5-ckfinder" "^35.4.0"
+    "@ckeditor/ckeditor5-cloud-services" "^35.4.0"
+    "@ckeditor/ckeditor5-easy-image" "^35.4.0"
+    "@ckeditor/ckeditor5-editor-classic" "^35.4.0"
+    "@ckeditor/ckeditor5-essentials" "^35.4.0"
+    "@ckeditor/ckeditor5-heading" "^35.4.0"
+    "@ckeditor/ckeditor5-image" "^35.4.0"
+    "@ckeditor/ckeditor5-indent" "^35.4.0"
+    "@ckeditor/ckeditor5-link" "^35.4.0"
+    "@ckeditor/ckeditor5-list" "^35.4.0"
+    "@ckeditor/ckeditor5-media-embed" "^35.4.0"
+    "@ckeditor/ckeditor5-paragraph" "^35.4.0"
+    "@ckeditor/ckeditor5-paste-from-office" "^35.4.0"
+    "@ckeditor/ckeditor5-table" "^35.4.0"
+    "@ckeditor/ckeditor5-typing" "^35.4.0"
+
 "@ckeditor/ckeditor5-ckbox@^35.4.0":
   "integrity" "sha512-kpEleQLsu3/nyvc46zkWBp3EvvxinnQfmwvi52h+FLbbI0TE0dxadRppQHZjHXd4yw29N6B1ePeMAVFRX1iYjQ=="
   "resolved" "https://registry.npmjs.org/@ckeditor/ckeditor5-ckbox/-/ckeditor5-ckbox-35.4.0.tgz"
@@ -1010,6 +1036,14 @@
 "@ckeditor/ckeditor5-editor-balloon@^35.4.0":
   "integrity" "sha512-xKnqB6vl5DXDS25AOWxBTsAeOqtIeW1m4iOn+ZFqCNBsoVcw1Z7B4mnryYgioVhyf0JHnMm+AigsH/uUPOLbNQ=="
   "resolved" "https://registry.npmjs.org/@ckeditor/ckeditor5-editor-balloon/-/ckeditor5-editor-balloon-35.4.0.tgz"
+  "version" "35.4.0"
+  dependencies:
+    "ckeditor5" "^35.4.0"
+    "lodash-es" "^4.17.15"
+
+"@ckeditor/ckeditor5-editor-classic@^35.4.0":
+  "integrity" "sha512-EqAqFD/5oPtDMU2AoH3eJaDplcS8MxfkiRQ5hzeC1JeIPT94w5FCHnB4SAkjLPDnlyZnBWOOYdZSuln2TRIbEw=="
+  "resolved" "https://registry.npmjs.org/@ckeditor/ckeditor5-editor-classic/-/ckeditor5-editor-classic-35.4.0.tgz"
   "version" "35.4.0"
   dependencies:
     "ckeditor5" "^35.4.0"
