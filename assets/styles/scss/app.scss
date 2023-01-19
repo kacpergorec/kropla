@@ -18,7 +18,7 @@ body {
   display: flex;
   flex-direction: column;
 
-  p:first-child{
+  p:first-child {
     margin-top: 0.9rem;
   }
 
@@ -76,6 +76,17 @@ body {
   }
 }
 
+.ck-reset{
+  font-family: inherit !important;
+}
+
+.ck-editor, .ck-editor__main, .ck-editor__editable {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+}
+
 // MISC
 
 .menu {
@@ -90,10 +101,10 @@ body {
 
 // PAGE CONTENT
 
-#page-title{
+#page-title {
   padding-inline: 0.6rem;
 }
 
-#page-content{
+#page-content {
   padding-inline: 0.6rem;
 }

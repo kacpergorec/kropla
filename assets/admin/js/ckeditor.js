@@ -1,12 +1,14 @@
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-if (document.querySelector(".ckeditor-textarea")) {
+const TEXTAREA_ELEMENT = document.querySelector(".ckeditor-textarea");
+
+if (TEXTAREA_ELEMENT) {
   ClassicEditor
-    .create( document.querySelector( '.ckeditor-textarea' ) )
-    .then( editor => {
+    .create(TEXTAREA_ELEMENT)
+    .then(editor => {
       window.editor = editor;
-    } )
-    .catch( error => {
-      console.error( 'There was a problem initializing the editor.', error );
-    } );
+    })
+    .catch(error => {
+      console.error("There was a problem initializing the editor.", error);
+    });
 }

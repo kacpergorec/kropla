@@ -6,5 +6,8 @@ import './bootstrap';
 import './styles/scss/app.scss';
 
 // Javascript
-import './js/ckeditor-block-baloon.js';
 import './js/cookies.js';
+
+
+//Phosphor icons
+import 'phosphor-icons/src/css/icons.css'

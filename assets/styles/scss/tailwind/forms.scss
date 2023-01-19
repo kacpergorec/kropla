@@ -21,7 +21,7 @@ $text-types: [
     @apply rounded-lg border-neutral-800 border-opacity-20 bg-white bg-opacity-80 py-0 focus:ring-0 px-5 w-full focus:border-blue-400 text-sm
   }
 
-  textarea{
+  textarea, .ck-editor{
     @apply h-full shadow-lg shadow-slate-200
   }
 

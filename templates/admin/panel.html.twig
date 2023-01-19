@@ -8,16 +8,15 @@
         - {{ block('title')|striptags }}
         {% endif %}
     </title>
-    <script src="https://unpkg.com/phosphor-icons"></script>
 
     {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
         {{ encore_entry_link_tags('admin') }}
+        {{ encore_entry_link_tags('app') }}
     {% endblock %}
 
     {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
         {{ encore_entry_script_tags('admin') }}
+        {{ encore_entry_script_tags('app') }}
     {% endblock %}
 
 </head>
