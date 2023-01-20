@@ -33,7 +33,7 @@ class Page
     private ?bool $promoted = false;
 
     #[ORM\Column(type: Types::JSON, nullable: true)]
-    private array $tags = [];
+    private ?array $tags = [];
 
 
     public function getTitle(): ?string
@@ -111,7 +111,7 @@ class Page
         return $this->getTitle();
     }
 
-    public function getTags(): array
+    public function getTags(): ?array
     {
         return $this->tags;
     }

@@ -7,7 +7,6 @@
 @import "extra/scrollbars";
 @import "@fontsource/sen";
 
-
 // ROOT
 
 body {
@@ -30,12 +29,11 @@ body {
   }
 }
 
-
 // ADMIN UTILS
 
 .no-round {
   border-radius: 0 !important;
-  @each $direction in ['left', 'right','top','bottom'] {
+  @each $direction in [ "left", "right", "top", "bottom"] {
     &-#{$direction} {
       border-bottom-#{$direction}-radius: 0 !important;
       border-top-#{$direction}-radius: 0 !important;
@@ -46,7 +44,7 @@ body {
 .animated-text-input {
   width: 100%;
   max-width: 400px;
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
   border-left-width: 0;
 
   &:focus {
@@ -76,15 +74,25 @@ body {
   }
 }
 
-.ck-reset{
+// CK-EDITOR
+
+.ck-reset {
   font-family: inherit !important;
 }
 
-.ck-editor, .ck-editor__main, .ck-editor__editable {
+.ck-editor,
+.ck-editor__main,
+.ck-editor__editable {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   width: 100%;
+}
+
+.ck.ck-sticky-panel .ck-sticky-panel__content_sticky{
+  top: 3rem;
+  box-shadow: 2px 5px 13px rgba(0,0,0,0.05);
+  overflow: hidden;
 }
 
 // MISC
@@ -98,6 +106,13 @@ body {
   height: auto;
 }
 
+.ckeditor-textarea {
+  filter: blur(0.15rem);
+  font-size: 0.9rem;
+  border-top-width: 45px;
+  border-top-color: #ececec !important;
+  overflow-y: hidden;
+}
 
 // PAGE CONTENT
 

@@ -4,11 +4,11 @@
 
 .side-menu {
   &__section {
-    @apply flex flex-col w-full;
+    @apply flex w-full flex-col;
   }
 
   &__header {
-    @apply mb-3 font-semibold text-lg;
+    @apply mb-3 text-lg font-semibold;
   }
 
   &__link {

@@ -1,23 +1,30 @@
-{{ form_start(form,{'attr':{'class':'form-control w-full'}}) }}
+{{ form_start(form, { attr: { class: 'form-control w-full' } }) }}
 
-<div class="flex w-full gap-8 mb-8 sm:flex-col-reverse lg:flex-row">
+<div class="mb-8 flex w-full flex-col-reverse gap-8 lg:flex-row">
     <div class="grow font-extrabold">
-        {{ form_widget(form.title,{'attr':{'class':'w-full h-full text-xl','placeholder' :'Tytuł strony'}}) }}
+        {{
+            form_widget(
+                form.title,
+                {
+                    attr: {
+                        class: 'w-full h-full text-xl',
+                        placeholder: 'Tytuł strony'
+                    }
+                }
+            )
+        }}
     </div>
-    <div class="flex gap-4 justify-center">
-        <a class="button" href="" onclick="history.back()">Powrót</a>
-        <a class="button" href="">
-            <i class="ph-eye-bold scale-150 mr-3"></i> Podgląd
-        </a>
-        <button class="button button--info">Zapisz</button>
+    <div class="flex flex-wrap justify-items-stretch gap-4">
+        <a class="button grow" href="" onclick="history.back()">Powrót</a>
+        <button class="button button--info grow">Zapisz</button>
     </div>
 </div>
 
-<div class="flex gap-8 sm:flex-col lg:flex-row">
-    <div class="basis-4/6 grow flex flex-col">
+<div class="flex flex-col gap-8 xl:flex-row">
+    <div class="flex w-full grow basis-4/6 flex-col">
         {{ form_widget(form.content) }}
     </div>
-    <div class="basis-2/6 flex flex-col">
+    <div class="flex w-full basis-2/6 flex-col">
         {{ form_row(form.author) }}
         {{ form_row(form.category) }}
         {{ form_row(form.redirectUrl) }}

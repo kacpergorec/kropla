@@ -6,10 +6,11 @@
                     {{ category.name }}
                 </h2>
                 {% for page in category.children %}
-                    <a href="{{ page.uri }}" class="side-menu__link">{{ page.name }}</a>
+                    <a href="{{ page.uri }}" class="side-menu__link">
+                        {{ page.name }}
+                    </a>
                 {% endfor %}
             </section>
         {% endfor %}
     </nav>
 {% endif %}
-

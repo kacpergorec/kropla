@@ -12,16 +12,14 @@ h6 {
 }
 
 @for $i from 1 through 6 {
-
-  $unit: 'rem';
+  $unit: "rem";
   $header-size: 3 - ($i * 0.3) + $unit;
   $line-height: 1 + ($i * 0.05);
 
   h#{$i} {
-    @apply text-[#{$header-size}] leading-[#{$line-height}] mb-3
+    @apply text-[#{$header-size}] leading-[#{$line-height}] mb-3;
   }
 }
-
 
 p {
   @apply mb-5;

@@ -1,21 +1,21 @@
 {% extends 'admin/panel.html.twig' %}
 
 {% block title %}
-    {{ entity }}
+    {% include 'admin/components/_breadcrumbs.html.twig' with {
+        action: 'Detale'
+    } %}
 {% endblock %}
 
-
 {% block body %}
-
-    <div class="flex  gap-4 mb-5">
+    <div class="mb-5 flex gap-4">
         <a class="button" href="{{ path(routes.index) }}">Powrót</a>
 
-        <a class="button button--info" href="{{ path(routes.edit,{id: entity.id}) }}">
+        <a class="button button--info"
+            href="{{ path(routes.edit, { id: entity.id }) }}">
             Edycja
         </a>
-        {% include('admin/components/_delete_form.html.twig') %}
+        {% include 'admin/components/_delete_form.html.twig' %}
     </div>
 
-    {{ tr_table_render(table,'table') }}
-
+    {{ tr_table_render(table, 'table') }}
 {% endblock %}

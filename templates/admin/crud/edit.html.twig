@@ -1,14 +1,13 @@
 {% extends 'admin/panel.html.twig' %}
 
 {% block title %}
-    <div class="flex items-center gap-3.5">
-        {{ get_crud_icon('text-3xl w-10 opacity-50')}} Edytuj <i class="ph-caret-right-thin"></i> {{ get_crud_name() }}
-    </div>
+    {% include 'admin/components/_breadcrumbs.html.twig' with {
+        action: 'Edytuj'
+    } %}
 {% endblock %}
 
 {% block body %}
-
-    {#  Custom form support#}
+    {# Custom form support #}
     {% if form.vars.attr.template is defined %}
         {% include form.vars.attr.template %}
     {% else %}
@@ -21,16 +20,14 @@
             </div>
         {% endfor %}
 
-        <div class="w-full flex justify-end gap-3">
+        <div class="flex w-full justify-end gap-3">
             <a class="button" href="{{ path(routes.index) }}">Powrót</a>
-{#            <a class="button" href="">#}
-{#                <i class="ph-eye-bold scale-150 mr-3"></i> Podgląd#}
-{#            </a>#}
+            {# <a class="button" href=""> #}
+            {# <i class="ph-eye-bold scale-150 mr-3"></i> Podgląd #}
+            {# </a> #}
             <button class="button button--info">Zapisz</button>
         </div>
         {{ form_rest(form) }}
         {{ form_end(form) }}
     {% endif %}
-
-
 {% endblock %}

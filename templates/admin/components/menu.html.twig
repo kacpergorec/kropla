@@ -1,9 +1,14 @@
 <ul>
     {% for item in knp_menu_get('admin') %}
+        <li>
             <a href="{{ item.uri }}"
-               class="group flex items-center rounded-lg border border-slate-700 border-opacity-0 px-5 py-3 transition hover:border-opacity-50 hover:bg-slate-700 hover:bg-opacity-10 hover:text-white">
-
-                <i class="{{ item.attributes.iconClass }} transition text-blue-300 opacity-30 group-hover:opacity-100 text-3xl flex items-center w-12 h-0"></i> <span>{{ item.name }}</span>
+               aria-label="{{ item.name }}"
+                class="group flex items-center rounded-lg border border-slate-700 border-opacity-0 px-2 lg:px-7 py-3 transition hover:border-opacity-50 hover:bg-slate-700 hover:bg-opacity-10 hover:text-white">
+                <i class="{{
+                    item.attributes.iconClass
+                    }} flex h-8 w-8 justify-center text-3xl text-blue-300 opacity-30 transition group-focus:opacity-100 group-hover:opacity-100 items-center">
+                </i>
+                <span class="group-focus:opacity-100 group-hover:opacity-100 opacity-0 lg:opacity-100 absolute bg-white border-2 border-gray-200 text-black left-[90%] px-2 shadow-lg rounded-lg lg:shadow-none lg:left-0 lg:relative lg:bg-transparent lg:border-0 lg:text-inherit ml-6">{{ item.name }}</span>
             </a>
         </li>
     {% endfor %}

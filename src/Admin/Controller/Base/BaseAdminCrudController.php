@@ -86,13 +86,10 @@ class BaseAdminCrudController extends AbstractController
         $form = $this->createForm($formType, $entity);
         $form->handleRequest($this->request);
 
-        dump($form->getErrors());
-
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->em->getRepository($entity::class)->save($entity, true);
 
-            return $this->redirectToRoute($routes['index'], [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute($routes['edit'], ['id' => $entity->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/crud/edit.html.twig', [
@@ -104,7 +101,7 @@ class BaseAdminCrudController extends AbstractController
 
     public function processCrudDelete($entity): Response
     {
-        $routes =  RouteHelper::extractCrudRoutesFromPreviousController();
+        $routes = RouteHelper::extractCrudRoutesFromPreviousController();
 
         if ($this->isCsrfTokenValid('delete' . $entity->getId(), $this->request->request->get('_token'))) {
             $this->em->getRepository($entity::class)->remove($entity, true);

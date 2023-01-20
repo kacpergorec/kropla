@@ -24,7 +24,7 @@ class Post
     private string $slug;
 
     #[ORM\Column(type: Types::JSON, nullable:true)]
-    private array $tags = [];
+    private ?array $tags = [];
 
     public function getTitle(): ?string
     {
@@ -65,7 +65,7 @@ class Post
         return 'Artykuł';
     }
 
-    public function getTags(): array
+    public function getTags(): ?array
     {
         return $this->tags;
     }

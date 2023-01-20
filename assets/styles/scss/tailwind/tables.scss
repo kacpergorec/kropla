@@ -1,15 +1,14 @@
 .table {
-  @apply border-separate border-spacing-0 ;
+  @apply border-separate border-spacing-0;
 }
 
 .table {
-   tr:not(:last-child){
+  tr:not(:last-child) {
     & > td,
     & > th {
       @apply border-b border-gray-200;
     }
   }
-
 
   th {
     @apply border-b border-gray-200 text-xs font-black text-gray-400;
@@ -31,32 +30,32 @@
   }
 
   .table__empty-cell {
-    @apply rounded-lg border text-xs py-1 text-gray-400 px-3 before:content-['null'] before:inline
+    @apply rounded-lg border py-1 px-3 text-xs text-gray-400 before:inline before:content-['null'];
   }
 
-  &--vertical{
-    th:last-of-type{
-      @apply border-0
+  &--vertical {
+    th:last-of-type {
+      @apply border-0;
     }
   }
 }
 
 .table-options {
-  @apply flex w-full justify-end gap-3
+  @apply flex w-full justify-end gap-3;
 }
 
 .table-options {
   &__option {
-    @apply button--naked
+    @apply button--naked;
   }
 
   &__option {
     &--edit {
-      @apply button--naked-info
+      @apply button--naked-info;
     }
 
     &--delete {
-      @apply button--naked-danger
+      @apply button--naked-danger;
     }
   }
 }
