@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Entity\User;
 
 use App\Entity\User;
 use App\Form\DataTransformer\JsonTransformer;
+use App\Form\RoleType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 

@@ -3,14 +3,14 @@
 namespace App\Admin\Controller;
 
 use App\Admin\Controller\Base\BaseAdminCrudController;
+use App\Admin\Interface\AdminControllerInterface;
 use App\Admin\Metadata\AdminMetadata;
 use App\Entity\Post;
-use App\Admin\Interface\AdminControllerInterface;
+use App\Form\Entity\Post\NewPostType;
+use App\Form\Entity\Post\PostType;
 use App\Repository\PostRepository;
 use App\Table\TableGenerator;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Form\PostType;
-use App\Form\NewPostType;
 
 
 #[Route('/admin/post')]

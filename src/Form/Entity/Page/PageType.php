@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Entity\Page;
 
 use App\Entity\Page;
+use App\Form\CKEditorType;
+use App\Form\DataTransformer\JsonTransformer;
+use App\Form\TagsType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,8 +31,12 @@ class PageType extends AbstractType
             ->add('redirectUrl', UrlType::class, ['required' => false])
             ->add('promoted', CheckboxType::class, ['required' => false])
             ->add('published', CheckboxType::class, ['required' => false])
+            ->add('tags', TagsType::class, ['required' => false])
             ->add('category')
             ->add('author');
+
+        $builder->get('tags')
+            ->addModelTransformer(new JsonTransformer());
     }
 
     public function configureOptions(OptionsResolver $resolver): void

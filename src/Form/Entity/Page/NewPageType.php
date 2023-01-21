@@ -1,32 +1,30 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Entity\Page;
 
-use App\Entity\Category;
+use App\Entity\Page;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class NewCategoryType extends AbstractType
+class NewPageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->setAction('new')
-            ->add('submit', SubmitType::class, [
-                'label' => 'Dodaj kategorię',
-            ])
-            ->add('title', TextType::class,[
-                'attr' => ['placeholder' => 'Wpisz tytuł nowej kategorii']
-            ]);
+            ->add('submit', SubmitType::class, ['label' => 'Dodaj stronę'])
+            ->add('title', TextType::class, ['label' => false, 'attr' => [
+                'placeholder' => 'Wpisz tytuł nowej strony'
+            ]]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Category::class,
+            'data_class' => Page::class,
         ]);
     }
 }

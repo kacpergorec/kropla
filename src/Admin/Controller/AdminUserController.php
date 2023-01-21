@@ -3,14 +3,14 @@
 namespace App\Admin\Controller;
 
 use App\Admin\Controller\Base\BaseAdminCrudController;
+use App\Admin\Interface\AdminControllerInterface;
 use App\Admin\Metadata\AdminMetadata;
 use App\Entity\User;
-use App\Admin\Interface\AdminControllerInterface;
+use App\Form\Entity\User\NewUserType;
+use App\Form\Entity\User\UserType;
 use App\Repository\UserRepository;
 use App\Table\TableGenerator;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Form\UserType;
-use App\Form\NewUserType;
 
 
 #[Route('/admin/user')]

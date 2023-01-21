@@ -3,14 +3,14 @@
 namespace App\Admin\Controller;
 
 use App\Admin\Controller\Base\BaseAdminCrudController;
+use App\Admin\Interface\AdminControllerInterface;
 use App\Admin\Metadata\AdminMetadata;
 use App\Entity\Category;
-use App\Admin\Interface\AdminControllerInterface;
+use App\Form\Entity\Category\CategoryType;
+use App\Form\Entity\Category\NewCategoryType;
 use App\Repository\CategoryRepository;
 use App\Table\TableGenerator;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Form\CategoryType;
-use App\Form\NewCategoryType;
 
 
 #[Route('/admin/category')]
