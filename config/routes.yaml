@@ -4,6 +4,12 @@ admin_controllers:
         namespace: App\Admin\Controller
     type: attribute
 
+api_controllers:
+    resource:
+        path: ../src/Api/Controller/
+        namespace: App\Api\Controller
+    type: attribute
+
 controllers:
     resource:
         path: ../src/Controller/

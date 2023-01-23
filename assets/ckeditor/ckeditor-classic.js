@@ -12,3 +12,4 @@ if (TEXTAREA_ELEMENT) {
       console.error(error.stack);
     });
 }
+

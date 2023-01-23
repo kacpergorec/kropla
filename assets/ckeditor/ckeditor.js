@@ -16,6 +16,7 @@ import ParagraphPlugin from "@ckeditor/ckeditor5-paragraph/src/paragraph";
 import CodeBlock from "@ckeditor/ckeditor5-code-block/src/codeblock";
 import SourceEditing from '@ckeditor/ckeditor5-source-editing/src/sourceediting';
 import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter';
+import HorizontalLine from '@ckeditor/ckeditor5-horizontal-line/src/horizontalline';
 
 export default class ClassicEditor extends ClassicEditorBase {
 }
@@ -37,6 +38,7 @@ ClassicEditor.builtinPlugins = [
   ParagraphPlugin,
   CodeBlock,
   SourceEditing,
+  HorizontalLine,
   SimpleUploadAdapter
 ];
 
@@ -45,7 +47,7 @@ ClassicEditor.defaultConfig = {
     items: [
       "heading", "|",
       "bold", "italic", "link", "|",
-      "bulletedList", "numberedList", "|",
+      "horizontalLine","bulletedList", "numberedList", "|",
       "uploadImage", "|",
       "blockQuote", "codeBlock", "|",
       "undo", "redo",  "|",
@@ -74,11 +76,13 @@ ClassicEditor.defaultConfig = {
     ]
   },
   simpleUpload: {
-    uploadUrl: 'http://example.com',
+    uploadUrl: window.location.origin+'/api/images',
     withCredentials: true,
     headers: {
-      'X-CSRF-TOKEN': document.querySelector("[id$='__token']").getAttribute('value'),
+      'X-CSRF-TOKEN': document.querySelector('#image-token').value,
       Authorization: 'Bearer <JSON Web Token>'
     }
   }
 };
+
+console.log(document.querySelectorAll('#image-token'))
