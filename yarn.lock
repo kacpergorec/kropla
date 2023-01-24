@@ -1043,6 +1043,13 @@
   dependencies:
     "ckeditor5" "^35.4.0"
 
+"@ckeditor/ckeditor5-horizontal-line@^35.4.0":
+  "integrity" "sha512-3swvTiZP80SdIOjaXmvYD5EtuWUcjfyK5AQ+1AXPQ5PlsCJCOcm/6Q9I+ml9TWhevI3O+in5dW8ZXKudAiqlNQ=="
+  "resolved" "https://registry.npmjs.org/@ckeditor/ckeditor5-horizontal-line/-/ckeditor5-horizontal-line-35.4.0.tgz"
+  "version" "35.4.0"
+  dependencies:
+    "ckeditor5" "^35.4.0"
+
 "@ckeditor/ckeditor5-image@^35.4.0":
   "integrity" "sha512-SQ+IiIB6SLhdhVy3gRKxxfBXpLikInvaP3ILOvPQlaC0Bt5ciJ3t/180zCBlbCvvRwIQNo4bYbZc5cI8UBIAaA=="
   "resolved" "https://registry.npmjs.org/@ckeditor/ckeditor5-image/-/ckeditor5-image-35.4.0.tgz"

@@ -47,6 +47,18 @@
             "./migrations/.gitignore"
         ]
     },
+    "friendsofsymfony/rest-bundle": {
+        "version": "3.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "2.2",
+            "ref": "fa845143b7e0a4c70aedd1a88c549e6d977e9ae5"
+        },
+        "files": [
+            "./config/packages/fos_rest.yaml"
+        ]
+    },
     "knplabs/knp-menu-bundle": {
         "version": "v3.2.0"
     },

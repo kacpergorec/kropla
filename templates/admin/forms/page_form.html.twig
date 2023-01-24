@@ -2,17 +2,15 @@
 
 <div class="mb-8 flex w-full flex-col-reverse gap-8 lg:flex-row">
     <div class="grow font-extrabold">
-        {{
-            form_widget(
-                form.title,
-                {
-                    attr: {
-                        class: 'w-full h-full text-xl',
-                        placeholder: 'Tytuł strony'
-                    }
-                }
-            )
-        }}
+        {{ form_widget(
+            form.title,
+            {
+                attr: {
+                class: 'w-full h-full text-xl',
+                placeholder: 'Tytuł strony'
+            }
+            }
+        ) }}
     </div>
     <div class="flex flex-wrap justify-items-stretch gap-4">
         <a class="button grow" href="" onclick="history.back()">Powrót</a>
@@ -38,5 +36,7 @@
         </div>
     </div>
 </div>
+
+<input type="hidden" id="image-token" value="{{ csrf_token('image') }}">
 
 {{ form_end(form) }}
