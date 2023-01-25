@@ -17,8 +17,23 @@ body {
   display: flex;
   flex-direction: column;
 
-  p, pre[class*="language-"]{
-    margin-bottom: 2rem;
+  p, pre {
+    margin-block: 2rem !important;
+  }
+
+  blockquote {
+    opacity: .8;
+    border-left: 5px solid rgba(133, 133, 133, 0.5);
+    font-style: italic;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    margin-bottom: 2rem !important;
+
+    p {
+      margin-bottom: 0 !important;
+    }
   }
 
   &.admin {
@@ -89,9 +104,9 @@ body {
   width: 100%;
 }
 
-.ck.ck-sticky-panel .ck-sticky-panel__content_sticky{
+.ck.ck-sticky-panel .ck-sticky-panel__content_sticky {
   top: 3rem;
-  box-shadow: 2px 5px 13px rgba(0,0,0,0.05);
+  box-shadow: 2px 5px 13px rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 

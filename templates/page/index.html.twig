@@ -1,9 +1,20 @@
 {% extends 'base/base.html.twig' %}
 
 {% block body %}
+    <time>
+        {{ page.updatedAt|format_datetime('full', 'none', locale='pl') }}
+    </time>
     <h1 id="page-title">
         {{ page.title }}
     </h1>
+    {% if page.tags is not empty %}
+        <div class="tags my-5 flex flex-wrap gap-3">
+            {% for tag in page.tags %}
+                <a href="#{{ tag }}" class="bg-gray-500 border opacity-50 bg-opacity-20 border-gray-500 px-3">{{ tag }}</a>
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <div id="page-content">
         {{ page.content|raw }}
     </div>

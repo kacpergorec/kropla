@@ -16,7 +16,7 @@ h6 {
   $header-size: 3 - ($i * 0.3) + $unit;
 
   h#{$i} {
-    @apply text-[#{$header-size}] leading-[1.5] mb-[2rem];
+    @apply text-[#{$header-size}] leading-[1.5];
   }
 }
 

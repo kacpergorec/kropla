@@ -14,9 +14,10 @@ import LinkPlugin from "@ckeditor/ckeditor5-link/src/link";
 import ListPlugin from "@ckeditor/ckeditor5-list/src/list";
 import ParagraphPlugin from "@ckeditor/ckeditor5-paragraph/src/paragraph";
 import CodeBlock from "@ckeditor/ckeditor5-code-block/src/codeblock";
-import SourceEditing from '@ckeditor/ckeditor5-source-editing/src/sourceediting';
-import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter';
-import HorizontalLine from '@ckeditor/ckeditor5-horizontal-line/src/horizontalline';
+import SourceEditing from "@ckeditor/ckeditor5-source-editing/src/sourceediting";
+import SimpleUploadAdapter from "@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter";
+import HorizontalLine from "@ckeditor/ckeditor5-horizontal-line/src/horizontalline";
+import AutoLink from "@ckeditor/ckeditor5-link/src/autolink";
 
 export default class ClassicEditor extends ClassicEditorBase {
 }
@@ -39,7 +40,8 @@ ClassicEditor.builtinPlugins = [
   CodeBlock,
   SourceEditing,
   HorizontalLine,
-  SimpleUploadAdapter
+  SimpleUploadAdapter,
+  AutoLink
 ];
 
 ClassicEditor.defaultConfig = {
@@ -47,10 +49,10 @@ ClassicEditor.defaultConfig = {
     items: [
       "heading", "|",
       "bold", "italic", "link", "|",
-      "horizontalLine","bulletedList", "numberedList", "|",
+      "horizontalLine", "bulletedList", "numberedList", "|",
       "uploadImage", "|",
       "blockQuote", "codeBlock", "|",
-      "undo", "redo",  "|",
+      "undo", "redo", "|",
       "sourceEditing"
     ]
   },
@@ -67,22 +69,20 @@ ClassicEditor.defaultConfig = {
   codeBlock: {
     languages: [
       // Use the "php-code" class for PHP code blocks.
-      { language: 'php', label: 'PHP'},
-      { language: 'javascript', label: 'JavaScript'},
-      { language: 'diff', label: 'Diff' },
-      { language: 'css', label: 'CSS' },
-      { language: 'html', label: 'HTML' },
-      { language: 'xml', label: 'XML' }
+      { language: "php", label: "PHP" },
+      { language: "javascript", label: "JavaScript" },
+      { language: "diff", label: "Diff" },
+      { language: "css", label: "CSS" },
+      { language: "html", label: "HTML" },
+      { language: "xml", label: "XML" }
     ]
   },
   simpleUpload: {
-    uploadUrl: window.location.origin+'/api/images',
+    uploadUrl: window.location.origin + "/api/images",
     withCredentials: true,
     headers: {
-      'X-CSRF-TOKEN': document.querySelector('#image-token').value,
-      Authorization: 'Bearer <JSON Web Token>'
+      "X-CSRF-TOKEN": document.querySelector("#image-token").value,
+      Authorization: "Bearer <JSON Web Token>"
     }
   }
 };
-
-console.log(document.querySelectorAll('#image-token'))
