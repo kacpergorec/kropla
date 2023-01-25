@@ -9,4 +9,5 @@ import './styles/scss/app.scss';
 import './js/cookies.js';
 
 //Phosphor icons
-import 'phosphor-icons/src/css/icons.css'
+import 'phosphor-icons/src/css/icons.css';
+

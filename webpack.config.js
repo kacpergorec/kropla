@@ -3,11 +3,6 @@ const { CKEditorTranslationsPlugin } = require("@ckeditor/ckeditor5-dev-translat
 const { styles } = require("@ckeditor/ckeditor5-dev-utils");
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
-// It's useful when you use tools that rely on webpack.config.js file.
-if (!Encore.isRuntimeEnvironmentConfigured()) {
-  Encore.configureRuntimeEnvironment(process.env.NODE_ENV || "dev");
-}
-
 Encore
   // directory where compiled assets will be stored
   .setOutputPath("public/build/")
@@ -26,8 +21,11 @@ Encore
   // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
   .enableStimulusBridge("./assets/controllers.json")
 
+  .addEntry("front", './assets/front.js')
+
   .addEntry("app", "./assets/app.js")
   .addEntry("admin", "./assets/admin.js")
+
   // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
   .splitEntryChunks()
 
@@ -108,5 +106,10 @@ Encore
 
 
 ;
+// It's useful when you use tools that rely on webpack.config.js file.
+if (!Encore.isRuntimeEnvironmentConfigured()) {
+  Encore.configureRuntimeEnvironment(process.env.NODE_ENV || "dev");
+
+}
 
 module.exports = Encore.getWebpackConfig();

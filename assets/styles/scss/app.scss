@@ -17,8 +17,8 @@ body {
   display: flex;
   flex-direction: column;
 
-  p:first-child {
-    margin-top: 0.9rem;
+  p, pre[class*="language-"]{
+    margin-bottom: 2rem;
   }
 
   &.admin {
@@ -123,3 +123,4 @@ body {
 #page-content {
   padding-inline: 0.6rem;
 }
+

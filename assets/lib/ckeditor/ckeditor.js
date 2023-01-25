@@ -67,8 +67,8 @@ ClassicEditor.defaultConfig = {
   codeBlock: {
     languages: [
       // Use the "php-code" class for PHP code blocks.
-      { language: 'php', label: 'PHP', class: 'php-code' },
-      { language: 'javascript', label: 'JavaScript', class: 'js-code' },
+      { language: 'php', label: 'PHP'},
+      { language: 'javascript', label: 'JavaScript'},
       { language: 'diff', label: 'Diff' },
       { language: 'css', label: 'CSS' },
       { language: 'html', label: 'HTML' },

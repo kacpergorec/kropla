@@ -1,4 +1,4 @@
 
 // Javascript
 import './admin/js/tagify.js'
-import './ckeditor/ckeditor-classic.js'
+import './lib/ckeditor/ckeditor-classic.js'
