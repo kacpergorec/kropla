@@ -5,15 +5,9 @@
                 ©
                 {{ 'now'|date('Y') }}
                 <a href="https://kropla.ml/" class="hover:underline">
-                    Kropla
-                </a>. All Rights Reserved.
+                    Kropla.pl
+                </a> All Rights Reserved.
             </span>
-            {% set menu = knp_menu_get('main', []) %}
-            {% do menu.setChildrenAttribute(
-                'class',
-                'flex h-full items-center gap-6'
-            ) %}
-            {{ knp_menu_render(menu, { currentClass: 'active' }) }}
         </footer>
     </div>
 </footer>

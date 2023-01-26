@@ -1,7 +1,11 @@
 {% extends 'base/base.html.twig' %}
 
+{% block title %}
+    {{ page.title }}
+{% endblock %}
+
 {% block body %}
-    <time>
+    <time class="text-sm opacity-60">
         {{ page.updatedAt|format_datetime('full', 'none', locale='pl') }}
     </time>
     <h1 id="page-title">

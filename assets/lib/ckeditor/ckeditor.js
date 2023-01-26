@@ -18,6 +18,8 @@ import SourceEditing from "@ckeditor/ckeditor5-source-editing/src/sourceediting"
 import SimpleUploadAdapter from "@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter";
 import HorizontalLine from "@ckeditor/ckeditor5-horizontal-line/src/horizontalline";
 import AutoLink from "@ckeditor/ckeditor5-link/src/autolink";
+import ImageResizeEditing from '@ckeditor/ckeditor5-image/src/imageresize/imageresizeediting';
+import ImageResizeHandles from '@ckeditor/ckeditor5-image/src/imageresize/imageresizehandles';
 
 export default class ClassicEditor extends ClassicEditorBase {
 }
@@ -41,7 +43,9 @@ ClassicEditor.builtinPlugins = [
   SourceEditing,
   HorizontalLine,
   SimpleUploadAdapter,
-  AutoLink
+  AutoLink,
+  ImageResizeEditing,
+  ImageResizeHandles
 ];
 
 ClassicEditor.defaultConfig = {

@@ -42,6 +42,44 @@ body {
     font-size: 14px;
     color: $admin-font-color-dark;
   }
+
+  // aside
+  aside.app-aside {
+    transition: opacity .5s ease, transform .5s ease;
+  }
+
+  @media (max-width: 1024px) {
+    /* styles for screens less than 1024 pixels wide */
+    aside.app-aside {
+      width: 95%;
+      max-width: 600px;
+      padding: 2rem;
+      z-index: 10;
+      position: fixed;
+      transform: translateX(-50%);
+      left: 50%;
+      margin-top: 10px;
+      max-height: 80vh;
+      overflow-y: auto;
+
+
+      &:target {
+        background-color: red;
+        left: 0;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    /* styles for screens more than 1024 pixels wide */
+    &.scrolled {
+      aside.app-aside {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
+  }
+
 }
 
 // ADMIN UTILS
@@ -116,9 +154,11 @@ body {
   padding-block: 1rem;
 }
 
-.logo {
-  width: 120px;
-  height: auto;
+body:not(.admin) {
+  .logo {
+    width: 120px;
+    height: auto;
+  }
 }
 
 .ckeditor-textarea {
@@ -130,12 +170,12 @@ body {
 }
 
 // PAGE CONTENT
-
-#page-title {
-  padding-inline: 0.6rem;
-}
-
-#page-content {
-  padding-inline: 0.6rem;
-}
+//
+//#page-title {
+//  padding-inline: 0.6rem;
+//}
+//
+//#page-content {
+//  padding-inline: 0.6rem;
+//}
 
