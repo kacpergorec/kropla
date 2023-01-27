@@ -1050,6 +1050,13 @@
   dependencies:
     "ckeditor5" "^35.4.0"
 
+"@ckeditor/ckeditor5-html-embed@^35.4.0":
+  "integrity" "sha512-xC0a+IeHEY7fw3Uvin2mMapBJS/zaS3z9gOkRTQhaKqLtIUKupgn3dTeM0vBrKzvUuAs3LSa1tz6GSyVycIDBQ=="
+  "resolved" "https://registry.npmjs.org/@ckeditor/ckeditor5-html-embed/-/ckeditor5-html-embed-35.4.0.tgz"
+  "version" "35.4.0"
+  dependencies:
+    "ckeditor5" "^35.4.0"
+
 "@ckeditor/ckeditor5-image@^35.4.0":
   "integrity" "sha512-SQ+IiIB6SLhdhVy3gRKxxfBXpLikInvaP3ILOvPQlaC0Bt5ciJ3t/180zCBlbCvvRwIQNo4bYbZc5cI8UBIAaA=="
   "resolved" "https://registry.npmjs.org/@ckeditor/ckeditor5-image/-/ckeditor5-image-35.4.0.tgz"

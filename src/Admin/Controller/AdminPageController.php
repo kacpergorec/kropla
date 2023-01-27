@@ -31,7 +31,9 @@ class AdminPageController extends BaseAdminCrudController implements AdminContro
     public function index(PageRepository $pageRepository, TableGenerator $tableGenerator): Response
     {
         $table = $tableGenerator
-            ->addEntities($pageRepository->findAll(), ['title', 'category', 'author', 'createdAt', 'published', 'promoted'])
+            ->addEntities($pageRepository->findAll(),
+                ['title', 'category', 'author', 'createdAt', 'published', 'promoted']
+            )
             ->addOptionsColumn()
             ->sortBy('createdAt', 'DESC')
 //            ->addIncrementalColumn()
