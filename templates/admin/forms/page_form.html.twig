@@ -1,4 +1,4 @@
-{{ form_start(form, { attr: { class: 'form-control w-full' } }) }}
+{{ form_start(form, { attr: { class: 'form-control w-full'} }) }}
 
 <div class="mb-8 flex w-full flex-col-reverse gap-8 lg:flex-row">
     <div class="grow font-extrabold">
@@ -36,7 +36,4 @@
         </div>
     </div>
 </div>
-
-<input type="hidden" id="image-token" value="{{ csrf_token('image') }}">
-
 {{ form_end(form) }}

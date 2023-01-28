@@ -6,6 +6,11 @@
     } %}
 {% endblock %}
 
+{% block javascripts %}
+    <script>const token = '{{ token }}';</script>
+    {{ parent() }}
+{% endblock %}
+
 {% block body %}
     {# Custom form support #}
     {% if form.vars.attr.template is defined %}

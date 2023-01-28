@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <title>
-        Kropla Admin{% if block('title') is defined %}
+        Kropla Admin
+        {% if block('title') is defined %}
         -
         {{ block('title')|striptags }}
         {% endif %}
@@ -35,7 +36,7 @@
     </aside>
     <div class="relative z-0 flex grow flex-col overflow-y-auto">
         <header class="gap-3 sticky top-0 top-0 right-0 z-30 flex w-full flex-wrap items-center justify-between border-b border-gray-200 bg-white px-4 py-2 lg:px-16 lg:py-4">
-            <h1 class="m-0 text-xl hidden lg:block">
+            <h1 class="mb-0 text-xl hidden lg:block">
                 {% if block('title') is defined %}
                     {{ block('title') }}
                 {% else %}
