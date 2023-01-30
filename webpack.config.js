@@ -19,7 +19,7 @@ Encore
    */
 
   // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
-  .enableStimulusBridge("./assets/controllers.json")
+  // .enableStimulusBridge("./assets/controllers.json")
 
   .addEntry("front", './assets/front.js')
 
@@ -95,15 +95,6 @@ Encore
 
   // enables Sass/SCSS support
   .enableSassLoader()
-
-
-// uncomment to get integrity="..." attributes on your script & link tags
-// requires WebpackEncoreBundle 1.4 or higher
-//.enableIntegrityHashes(Encore.isProduction())
-
-// uncomment if you're having problems with a jQuery plugin
-//.autoProvidejQuery()
-
 
 ;
 // It's useful when you use tools that rely on webpack.config.js file.

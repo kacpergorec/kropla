@@ -85,8 +85,7 @@ ClassicEditor.defaultConfig = {
     uploadUrl: window.location.origin + "/api/images",
     withCredentials: true,
     headers: {
-      "X-CSRF-TOKEN": document.querySelector("#image-token").value,
-      Authorization: "Bearer <JSON Web Token>"
+      Authorization: `Bearer ${token}`
     }
   }
 };

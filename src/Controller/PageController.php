@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PageController extends AbstractController
 {
-    #[Route('/{slug}', name: 'app_page')]
+    #[Route('/{slug}', name: 'app_page', priority: -10)]
     public function index(Page $page): Response
     {
         if (!$page->isPublished()){

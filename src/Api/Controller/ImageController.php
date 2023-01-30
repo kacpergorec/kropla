@@ -4,7 +4,6 @@ declare (strict_types=1);
 namespace App\Api\Controller;
 
 use App\Api\Errors\ApiError;
-use App\Api\TokenManager\HeaderCsrfTokenManager;
 use App\Form\ImageType;
 use App\Repository\PageRepository;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
@@ -28,8 +27,7 @@ class ImageController extends AbstractFOSRestController
 
         $finder = new Finder();
         $finder->files()
-            ->in($this->getParameter('upload_images_path'))
-            ->filter(fn($f) => $this->validateImage($f->getRealPath()));
+            ->in($this->getParameter('upload_images_path'));
 
         $files = [];
 
@@ -45,13 +43,16 @@ class ImageController extends AbstractFOSRestController
     public function uploadImages(Request $request): JsonResponse
     {
         $baseUrl = $request->getSchemeAndHttpHost();
-        $token = $request->headers->get('X-CSRF-TOKEN');
         $file = $request->files->get('upload');
 
-        $form = $this->createForm(ImageType::class);
+        //Decided to disable CSRF protection here because the app is now using JWT to validate the api requests
+        $form = $this->createForm(ImageType::class, null , [
+            'csrf_protection' => false,
+        ]);
 
-        $form->submit(['_token' => $token,'image' => $file]);
+        $form->submit(['image' => $file]);
 
+        //Form validation to JSON response (CKEditor5 Schema)
         if (!$form->isValid()) {
             $message = $form->getErrors(true)->current()->getMessage();
             return $this->json((new ApiError($message))->getError(), 400);

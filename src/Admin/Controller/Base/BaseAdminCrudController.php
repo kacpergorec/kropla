@@ -6,6 +6,7 @@ namespace App\Admin\Controller\Base;
 use App\Helper\RouteHelper;
 use App\Table\Table;
 use Doctrine\ORM\EntityManagerInterface;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -17,12 +18,14 @@ class BaseAdminCrudController extends AbstractController
     private Request $request;
     private EntityManagerInterface $em;
     public RouterInterface $router;
+    private JWTTokenManagerInterface $JWTManager;
 
-    public function __construct(RequestStack $requestStack, EntityManagerInterface $em, RouterInterface $router)
+    public function __construct(RequestStack $requestStack, EntityManagerInterface $em, RouterInterface $router,  JWTTokenManagerInterface $JWTManager)
     {
         $this->request = $requestStack->getCurrentRequest();
         $this->em = $em;
         $this->router = $router;
+        $this->JWTManager = $JWTManager;
     }
 
     public function renderCrudIndex(string $className, string $formType, Table $table): Response
@@ -92,10 +95,13 @@ class BaseAdminCrudController extends AbstractController
             return $this->redirectToRoute($routes['edit'], ['id' => $entity->getId()], Response::HTTP_SEE_OTHER);
         }
 
+        $token = $this->JWTManager->create($this->getUser());
+
         return $this->render('admin/crud/edit.html.twig', [
             'entity' => $entity,
             'form' => $form,
-            'routes' => $routes
+            'routes' => $routes,
+            'token' => $token,
         ]);
     }
 
