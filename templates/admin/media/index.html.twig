@@ -1,5 +1,36 @@
 {% extends 'admin/panel.html.twig' %}
 
+{% block title %}
+    {% include 'admin/components/_breadcrumbs.html.twig' with {
+        action: 'Pliki',
+        extraItems: currentDirectory|split('/')|filter(v => v != '')
+    } %}
+{% endblock %}
+
 {% block body %}
-media here
-{% endblock body %}
+
+    <div class="flex gap-5 flex-wrap mb-6">
+        {% if currentDirectory is not null %}
+            <a class="button w-fit"
+               href="{{ path('admin_media_index')}}">Wróć</a>
+        {% endif %}
+    </div>
+
+    <div class="media">
+        {% for directory in finder.directories %}
+            <a class="media__tile directory-tile"
+               href="{{ path('admin_media_index', {'dir': currentDirectory ~ directory.relativePathName }) }}">
+
+                {{ directory.relativePathName }}
+            </a>
+        {% endfor %}
+
+        {% for file in finder.files %}
+            <a class="media__tile file-tile" href="{{ file.realPath }}">
+                {{ file.relativePathName }}
+            </a>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

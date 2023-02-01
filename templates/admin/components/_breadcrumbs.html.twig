@@ -1,4 +1,15 @@
-<div class="flex items-center gap-3.5">
-    {{ get_crud_icon('text-3xl w-10 opacity-50') }} {{ action }}
-    <i class="ph-caret-right-thin"></i> {{ get_crud_name() }}
+<div class="flex flex-wrap items-center gap-5">
+    <div class="flex items-center gap-3.5">
+        {{ get_crud_icon('text-3xl w-10 opacity-50') }} {{ action }}
+        <i class="ph-caret-right-thin"></i> {{ get_crud_name() }}
+    </div>
+    {% if extraItems is defined and extraItems is not empty %}
+        <div class="flex items-center gap-1 text-sm font-normal text-indigo-600 bg-indigo-200 rounded-lg px-3 py-1">
+            {% for item in extraItems %}
+                <span class="last-of-type:font-bold">{{ item }}</span><i
+                    class="ph-caret-right text-xs last-of-type:hidden"></i>
+            {% endfor %}
+        </div>
+    {% endif %}
+
 </div>
