@@ -12,7 +12,7 @@
         {{ page.title }}
     </h1>
     {% if page.tags is not empty %}
-        <div class="tags my-5 flex flex-wrap gap-3">
+        <div class="tags mb-7 flex flex-wrap gap-3">
             {% for tag in page.tags %}
                 <a href="#{{ tag }}" class="bg-gray-500 border opacity-50 bg-opacity-20 border-gray-500 px-3">{{ tag }}</a>
             {% endfor %}

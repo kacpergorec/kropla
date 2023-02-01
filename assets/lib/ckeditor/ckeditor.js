@@ -17,12 +17,13 @@ import CodeBlock from "@ckeditor/ckeditor5-code-block/src/codeblock";
 import SourceEditing from "@ckeditor/ckeditor5-source-editing/src/sourceediting";
 import SimpleUploadAdapter from "@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter";
 import HorizontalLine from "@ckeditor/ckeditor5-horizontal-line/src/horizontalline";
-import ImageResizeEditing from '@ckeditor/ckeditor5-image/src/imageresize/imageresizeediting';
-import ImageResizeHandles from '@ckeditor/ckeditor5-image/src/imageresize/imageresizehandles';
-import HtmlEmbed from '@ckeditor/ckeditor5-html-embed/src/htmlembed';
+import ImageResizeEditing from "@ckeditor/ckeditor5-image/src/imageresize/imageresizeediting";
+import ImageResizeHandles from "@ckeditor/ckeditor5-image/src/imageresize/imageresizehandles";
+import HtmlEmbed from "@ckeditor/ckeditor5-html-embed/src/htmlembed";
 
 export default class ClassicEditor extends ClassicEditorBase {
 }
+
 
 ClassicEditor.builtinPlugins = [
   EssentialsPlugin,

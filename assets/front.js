@@ -5,4 +5,5 @@ import './lib/prism/prism.scss';
 
 //my js
 import './js/front-listeners.js';
+import './js/theme-switcher.js';
 

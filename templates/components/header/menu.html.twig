@@ -1,0 +1,8 @@
+<nav aria-label="Main navigation">
+    {% set menu = knp_menu_get('main', []) %}
+    {% do menu.setChildrenAttribute(
+        'class',
+        'flex h-full items-center gap-6'
+    ) %}
+    {{ knp_menu_render(menu, { currentClass: 'active' }) }}
+</nav>

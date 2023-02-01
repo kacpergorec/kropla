@@ -2,31 +2,12 @@
     <div class="menu container mx-auto flex justify-between px-3">
         {# Logos #}
         <div class="basis-1/6">
-            <a href="{{ path('app_home') }}" class="">
-                <img src="{{
-                    asset(
-                        'images/logo/wide-transparent-darkmode.webp'
-                    )
-                    }}"
-                    alt="Kropla logo for the dark mode"
-                    class="logo hidden dark:block" />
-                <img src="{{
-                    asset(
-                        'images/logo/wide-transparent-lightmode.webp'
-                    )
-                    }}"
-                    alt="Kropla logo for the light mode"
-                    class="logo dark:hidden" />
-            </a>
+            {% include 'components/header/_logo.html.twig' %}
         </div>
         {# Main naviagiton menu #}
-        <nav aria-label="Main navigation basis-5/6">
-            {% set menu = knp_menu_get('main', []) %}
-            {% do menu.setChildrenAttribute(
-                'class',
-                'flex h-full items-center gap-6'
-            ) %}
-            {{ knp_menu_render(menu, { currentClass: 'active' }) }}
-        </nav>
+        <div class="flex gap-6">
+            {% include 'components/header/menu.html.twig' %}
+            {% include 'components/header/_theme_switch.html.twig' %}
+        </div>
     </div>
 </header>
