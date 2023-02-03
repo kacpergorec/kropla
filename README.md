@@ -53,7 +53,7 @@ Currently under development.
 
 ## Presentation
 
-![image](https://drive.google.com/uc?export=view&id=19_k8OwYLeDWir8K_TT4GhgGLoyqDnJOK)
+![Kropla presentation GIF](https://drive.google.com/uc?export=view&id=19_k8OwYLeDWir8K_TT4GhgGLoyqDnJOK)
 
 
 ## Contributing
