@@ -19,8 +19,12 @@ Currently under development.
 
 - Track your progress in learning web development
 - Custom admin backend
+- Media browser
+- WYSIWYG CKEditor 5
 - Support for multiple authors
-- Semi-automatic CRUD sections
+- Want an admin CRUD Controller? 
+    - Create an entity and run this bad boy `make:kropla:admin-crud`
+    - This command will run a simple CRUD Controller wizard
 
 ## Installation
 
@@ -28,6 +32,7 @@ Currently under development.
 2. `docker-compose up -d`
 3. `symfony serve -d` Run the web-server
 4. `npm run watch`  Run SASS watchers and Tailwind JIT compiler
+
 5. To use **'Prettier'** run `npm run format:twig && npm run format:styles`
 
 ## TODOs
@@ -42,8 +47,13 @@ Currently under development.
 - Page Nesting
 - AJAX backend
 - Built-in analytics
-- Media management
+- Complete media management
 - Tidy up Twig templates
+- Google API integration (Translation, TTS)
+
+## Presentation
+
+![image](https://drive.google.com/uc?export=view&id=19_k8OwYLeDWir8K_TT4GhgGLoyqDnJOK)
 
 
 ## Contributing
