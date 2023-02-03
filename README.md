@@ -1,4 +1,4 @@
-# <img width="300" src="https://raw.githubusercontent.com/kacpergorec/kropla/main/assets/images/logo/wide-transparent-darkmode.webp?token=GHSAT0AAAAAABZRO7ELDRNEFHUXWCUVFPCMY55Q27A" alt="Kropla" title="Kropla logo">
+# <img width="300" src="https://raw.githubusercontent.com/kacpergorec/kropla/main/public/images/logo/wide-transparent-darkmode.webp?token=GHSAT0AAAAAABZRO7ELDRNEFHUXWCUVFPCMY55Q27A" alt="Kropla" title="Kropla logo">
 
 My [personal blog](https://kropla.ml) and a CMS built from scratch using Symfony and Doctrine.
 
