@@ -37,8 +37,6 @@ class PageType extends AbstractType
             ->add('category', EntityType::class, ['class'=> Category::class,'placeholder' => 'Bez kategorii', 'required' => false])
             ->add('author');
 
-        $builder->get('tags')
-            ->addModelTransformer(new JsonTransformer());
     }
 
     public function configureOptions(OptionsResolver $resolver): void
